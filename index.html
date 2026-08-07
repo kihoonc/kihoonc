@@ -1,179 +1,2565 @@
 <!doctype html>
 <html lang="ko">
-<head>
-<meta charset="utf-8">
-<title>확보데이터 증빙이미지 — SDFM 과제 신청 별첨</title>
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,'Apple SD Gothic Neo',sans-serif; color:#2b2b2b; background:#ffffff; }
-.page { max-width:820px; margin:0 auto; padding:36px 24px; }
-h1 { font-size:20px; margin-bottom:4px; }
-.meta { color:#7a7a7a; font-size:12.5px; margin-bottom:24px; }
-h2 { font-size:14.5px; margin:26px 0 8px; color:#2b2b2b; }
-figure { margin:0 0 8px; border:1px solid #cfcdd9; border-radius:8px; padding:10px; page-break-inside:avoid; }
-table { width:100%; border-collapse:collapse; font-size:12px; margin:8px 0 4px; }
-th { text-align:left; background:#f8f7fa; color:#5c5c5c; font-weight:600; border:1px solid #cfcdd9; padding:6px 8px; }
-td { border:1px solid #e3e1eb; padding:6px 8px; vertical-align:top; }
-img { width:100%; display:block; }
-figcaption { font-size:11.5px; color:#5c5c5c; padding:8px 4px 2px; }
-.todo { border:1px dashed #9e6a00; background:#fff3db; color:#9e6a00; border-radius:8px; padding:14px 18px; font-size:13px; margin:10px 0; page-break-inside:avoid; }
-@media print { .page { max-width:none; padding:0; } figure { border-color:#ddd; } }
-</style>
-</head>
-<body>
-<div class="page">
-  <h1>확보데이터 증빙이미지 (별첨)</h1>
-  <div class="meta">과제: Software Delivery Foundation Model(SDFM) 및 멀티에이전트 실행 플랫폼 개발 ·
-  전 수치 2026-08-03 고정 스냅샷 실측 · 재현: gpu_request_dataset_evidence/ (extract_real_data.py → validate_jsonl.py → dataset_stats.py → make_charts_real.py)</div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CollabOps Agent Channel Mock</title>
+    <style>
+      :root {
+        --surface-canvas: #f7f8fb;
+        --surface-base: #ffffff;
+        --surface-muted: #f4f6f9;
+        --surface-raised: #ffffff;
+        --feedback-hover: #edf1f7;
+        --border-subtle: #edf0f4;
+        --border-middle: #d9e1ea;
+        --border-strong: #b8c3d2;
+        --text-basic: #1f2633;
+        --text-subtle: #5f6b7a;
+        --text-subtler: #8a94a6;
+        --text-inverse: #ffffff;
+        --primary: #3154c9;
+        --primary-soft: #eef3ff;
+        --success: #1b7f46;
+        --success-soft: #edf8f1;
+        --warning: #9a6700;
+        --warning-soft: #fff6df;
+        --danger: #b42318;
+        --shadow-basic: 0 1px 2px rgb(15 23 42 / 0.08);
+        --radius-xs: 4px;
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        font-family:
+          Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+          "Malgun Gothic", sans-serif;
+        color: var(--text-basic);
+        background: var(--surface-canvas);
+      }
 
-  <h2 style="margin-top:8px">증빙자료 구성 안내</h2>
-  <table>
-    <tr><th style="width:15%">구성</th><th style="width:38%">내용</th><th>무엇을 증명하는가</th></tr>
-    <tr><td>0절 총괄표</td><td>양식 6개 유형별 확보 현황 (자사 실측 + 외부 확보 가능분)</td><td>확보데이터 전체 그림 — 이하 모든 증빙의 색인</td></tr>
-    <tr><td>1~5절 차트</td><td>저장 총량 · 적재 추이 · 학습셋 구성/품질 · 실신호 · LLMOps 루프(+실행 분산 추적 ⑲)</td><td>확보 데이터의 규모·구성·품질, 실행 관측성</td></tr>
-    <tr><td>6절 DB 캡처 ①~⑦</td><td>실행 SQL 원문 + 서버측 검증값(<code>inet_server_addr()</code>·서버 시각)이 함께 찍힌 터미널 출력</td><td><b>수치의 원시 증거</b> — 차트가 아니라 서버가 응답한 화면</td></tr>
-    <tr><td>7절 캡처 ⑧~⑩</td><td>월별 적재 추이 · 확보 원문 토큰 · git 서버 전수 실측(라이브 재검증 포함)</td><td>증가율과 코드 원천 보유량</td></tr>
-    <tr><td>7-1절</td><td>목표 도달 전망 (자사 단독 / 공개 결합)</td><td>지원기간 내 구축 목표 달성 경로</td></tr>
-    <tr><td>7-2절 캡처 ⑪</td><td>합성 데이터 파일럿 682건 · 품질 게이트 결과</td><td>합성 방법론이 계획이 아니라 <b>동작함</b></td></tr>
-    <tr><td>7-3절 캡처 ⑫~⑭</td><td>공개 데이터 API 라이브 조회 + HF 공식 카드</td><td>외부 데이터 확보 가능성·라이선스</td></tr>
-    <tr><td>8절 캡처 ⑮~⑱</td><td>CollabOps 이슈·CR·CI·에이전트 실행 화면</td><td>자체 플랫폼과 데이터 생성 현장의 실존</td></tr>
-    <tr><td><b>별도 제출<br>(요청 시)</b></td><td><b>학습셋 JSONL 실물</b> — 발췌본 179건(<code>00_summary/sample_excerpt/</code>, 균등 간격 표본·마스킹 적용) ·
-      정제본 151,470건 전량(<code>03_sample_jsonl/</code>, 132MB) · 합성 파일럿 682건(<code>06_synthetic_pilot/</code>)</td>
-      <td>수치가 아닌 <b>데이터 실물</b> — 스키마·레코드 내용 직접 확인용. 정제본 전량은 내부 라이선스상 외부 배포 불가라 발췌본 제공, 요청 시 현장 시연</td></tr>
-  </table>
-  <p style="font-size:12px;color:#5c5c5c;margin:6px 0 2px"><b>표기 원칙</b> — 자사 수치는 전부 2026-08-04 서버 응답 실측이며,
-  계획·전망치(projected)는 캡션에 별도 표기한다. 양식의 수량 목표치(300만~25억)는 지원기간 내 구축 목표다.</p>
-  <p style="font-size:12px;color:#5c5c5c;margin:2px 0 14px"><b>재현 방법</b> — 모든 수치는 읽기 전용 스크립트로 재현 가능:
-  <code>evidence_counts.sh</code>(DB 실측·증가율·원문 토큰) · <code>evidence_stage_git.sh --summary</code>(git 전수) ·
-  <code>evidence_public_data.sh</code>(공개 데이터) · <code>make_charts_real.py</code>(차트 재생성) ·
-  <code>extract_real_data.py</code> → <code>validate_jsonl.py</code>(학습셋 추출·검증).</p>
+      * {
+        box-sizing: border-box;
+      }
 
-  <h2>0. 유형별 확보 현황 총괄 (신청서 확보데이터 표 기준 · 2026-08-04 실측)</h2>
-  <figure><img src="charts/0_holdings_by_type.png" alt="유형별 확보 현황 총괄표">
-    <figcaption>양식의 6개 유형 기준 확보 현황 — 자사 실측(서버 응답 캡처 재현 가능) + 외부 확보 가능분(라이선스 검증 공개 데이터).
-    수량 목표치(300만~25억)는 지원기간 내 구축 목표이며, 도달 전망은 7-1절·증가율 실측은 7절 참조.</figcaption></figure>
+      [hidden] {
+        display: none !important;
+      }
 
-  <h2>1. 플랫폼 저장 데이터 총량 (확보 데이터)</h2>
-  <figure><img src="charts/8_storage_inventory.png" alt="저장 데이터 인벤토리">
-    <figcaption>스토리지 계층(PVC 할당 실측: git 32GB · Zoekt 20GB · Qdrant 벡터 16GB · 오브젝트 스토리지 16GB) + DB 실사용(stage 8.8GB + prod 0.2GB, pg_database_size). 주황 = 학습 텍스트만 추출·마스킹한 정제본 131MB. 할당은 provisioned 용량으로 실사용은 그 이하.</figcaption></figure>
+      html,
+      body {
+        height: 100%;
+      }
 
-  <h2>2. 원천 데이터 자연 적재 추이</h2>
-  <figure><img src="charts/1_monthly_accrual.png" alt="월별 적재 추이">
-    <figcaption>이슈·CR·활동 이벤트·CI 실행의 월별 신규 생성 — 서비스 사용만으로 적재(합성 0), 5주간 2.5× 성장의 근거.</figcaption></figure>
+      body {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.45;
+      }
 
-  <h2>2-1. 유형별 성장 추이 (증가율)</h2>
-  <figure><img src="charts/11_growth_by_type.png" alt="유형별 월별 성장">
-    <figcaption>유형별 월 신규 적재 추이 — 패널마다 최초 관측월 → 7월 값과 성장 배수를 표기했다.
-    원시 실측(SQL 원문 포함)은 캡처⑧ 참조.</figcaption></figure>
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
 
-  <h2>3. 학습셋 구성·품질</h2>
-  <figure><img src="charts/2_dataset_composition.png" alt="학습셋 구성">
-    <figcaption>6종 JSONL 151,470건 — 전량 실추출, extraction_manifest.json 실측.</figcaption></figure>
-  <figure><img src="charts/5_length_distribution.png" alt="길이 분포">
-    <figcaption>추정 토큰 분포 (p50 110 · p90 442 · p99 1,292) — 본문(diff·CI 로그) 첨부 전 기준.</figcaption></figure>
-  <figure><img src="charts/6_training_mix.png" alt="학습 믹스">
-    <figcaption>레코드 비중 vs 토큰 비중 — 배치 샘플링 설계 근거 (corpus mixture).</figcaption></figure>
+      button {
+        cursor: pointer;
+      }
 
-  <h2>3-1. 2단계 학습 전략 — 토큰 규모 구도</h2>
-  <figure><img src="charts/9_token_plan.png" alt="학습 토큰 규모 구도">
-    <figcaption>공개 코퍼스(The Stack v2·CommitPackFT·SWE-bench, 라이선스 검증) 선별 중간학습 ~10B(계획) + 자사 본문 첨부 ~3B(projected) + 정제본 34.3M(실측). 진한 색만 실측 — 능력은 공개 데이터로, 차별화는 자사 1차 데이터로.</figcaption></figure>
+      .app {
+        display: grid;
+        grid-template-columns: 56px 276px minmax(0, 1fr) 320px;
+        height: 100vh;
+        min-height: 680px;
+        background: var(--surface-canvas);
+      }
 
-  <h2>4. 선호정렬·CI 학습 실신호</h2>
-  <figure><img src="charts/3_real_signals.png" alt="실신호 분포">
-    <figcaption>merged/closed CR · approved/rejected 리뷰 · CI SUCCESS/FAILURE — DPO 선호쌍과 실패분석 학습의 실신호.</figcaption></figure>
+      .rail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 8px;
+        border-right: 1px solid var(--border-subtle);
+        background: var(--surface-base);
+      }
 
-  <h2>5. LLMOps 루프 가동 증거</h2>
-  <figure><img src="charts/4_llmops_loop.png" alt="루프 활동 추이">
-    <figcaption>agent_runs·eval_runs 월별 실행 — 에이전트 실행·평가 루프가 실제 가동 중.</figcaption></figure>
-  <figure><img src="charts/7_reliability_panel.png" alt="신뢰성 패널">
-    <figcaption>성공률 78.5%(741/944) · tool_success_rate 0.877 · loop_completion 0.921 · policy_denied 0 — 자동 계측 실측.</figcaption></figure>
+      .workspace-mark {
+        display: grid;
+        width: 32px;
+        height: 32px;
+        place-items: center;
+        border: 1px solid var(--border-middle);
+        border-radius: var(--radius-md);
+        background: var(--surface-raised);
+        color: var(--text-basic);
+        font-size: 12px;
+        font-weight: 700;
+      }
 
-  <figure><img src="../02_current_actual_data/captures/capture_19_trace_agent_run.png" alt="에이전트 실행 분산 추적">
-    <figcaption>⑲ 에이전트 실행 분산 추적(distributed trace) — <code>agent.run</code> 단일 실행 <b>474 spans · 2분 50초</b>
-    (2026-08-04 11:59 실행). <code>llm.call</code>(추론)과 <code>tool.call</code>(플랫폼 도구 실행)이 교대로 반복되는 ReAct 루프,
-    그리고 agent-runtime → api-orchestrator(<code>/decisions</code>·<code>/issues</code>) 호출 체인이 span 단위 소요시간과 함께 기록된다.
-    Agent Runtime 이 LLM 추론과 플랫폼 기능 실행을 실제로 수행하는 구조 + 실행 내부까지 관측 가능한 운영 체계(GenAIOps 모니터링 요건)의 증빙.</figcaption></figure>
+      .rail-button,
+      .icon-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border: 0;
+        border-radius: var(--radius-sm);
+        background: transparent;
+        color: var(--text-subtler);
+      }
 
-  <h2>6. DB 실측 터미널 캡처 (원시 증빙)</h2>
-  <p style="font-size:12.5px;color:#5c5c5c;margin:4px 0 10px">동일 세션 연속 캡처 — 2026-08-04 13:16 KST 실행.
-  1장째 상단에 실행 시각과 서버측 검증값(<code>inet_server_addr()</code>·서버 시각)이, 각 결과 위에 실행 SQL 원문이 포함된다.
-  스크립트: <code>02_current_actual_data/evidence_counts.sh</code> (읽기 전용 SELECT, 재현 가능).</p>
-  <figure><img src="../02_current_actual_data/captures/capture_01_header_code_docs.png" alt="헤더+코드·문서 원천">
-    <figcaption>① 실행 헤더 · server-side 검증 · [1] 코드·문서 원천 — 심볼 78만·청크 15.6만·문서 블록 56.9만·인덱싱 파일 10,075</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_02_relations.png" alt="관계 데이터">
-    <figcaption>② [2] Issue-Commit-Review 관계 — 콜그래프 엣지 1,569,318 · 문서-심볼 매핑 678,075 · 커밋 24,991</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_03_cicd.png" alt="CI/CD 이벤트">
-    <figcaption>③ [3] CI/CD 이벤트 — 실행 39,593 · 스텝 159,497</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_04_ops_audit.png" alt="운영·감사 이벤트">
-    <figcaption>④ [4] 운영·감사 이벤트 — 활동 감사로그 93,910 · 알림 25,004</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_05_llmops_loop.png" alt="LLMOps 루프">
-    <figcaption>⑤ [5] LLMOps 루프 — 에이전트 실행 975 · 평가 실행 524 · 평가 메트릭 7,411</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_06_training_set.png" alt="학습셋 정제본">
-    <figcaption>⑥ [6] 학습셋 정제본 — 6종 JSONL 151,470건 · 132MB</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_07_db_size.png" alt="DB 용량">
-    <figcaption>⑦ [7] DB 용량 (pg_database_size) — code_intel 6,506MB · piper 1,199MB 등</figcaption></figure>
+      .rail-button:hover,
+      .icon-button:hover {
+        background: var(--feedback-hover);
+        color: var(--text-basic);
+      }
 
-  <h2>7. 증가율·확보 원문·git 전수 실측</h2>
-  <figure><img src="../02_current_actual_data/captures/capture_08_growth.png" alt="월별 적재 추이">
-    <figcaption>⑧ [8] 월별 신규 적재 — <b>양식 6개 유형 전부</b>의 증가 추이 (2026-02~07, 8월은 부분월).
-    ① 문서 블록 299→471,823 · 기술문서 297→589 · ② 이슈 410→2,154, CR 81→2,467, 리뷰코멘트 ·
-    ③ CI 실행 327→8,609 · ④ 활동 이벤트 2,897→23,586 · ⑤⑥ 에이전트 실행 172→754, 평가 실행 21→454.
-    각 결과 위에 실행 SQL 원문이 함께 찍혀 있으며, 목표 도달 논증의 증가율 근거가 된다.</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_09_source_tokens.png" alt="확보 원문 토큰">
-    <figcaption>⑨ [9] 확보 원문 텍스트 실측 — 문서 블록 6,798kB(추정 1.7M tokens) · 플랫폼 텍스트 14MB(추정 3.7M tokens) · 로컬 클론 라이브 실측 42 repo/27,860 파일(추정 43.1M tokens)</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_10_stage_git.png" alt="stage git 전수 실측">
-    <figcaption>⑩ stage git 서버 파일 수 전수 실측 — 유효 저장소 148개 · HEAD 파일 58,061개 (빈/테스트 저장소 127개 제외). blobless clone 후 <code>ls-tree -r HEAD</code>, 무작위 3개 저장소 라이브 재검증 포함.</figcaption></figure>
+      .rail-button.is-active {
+        background: var(--feedback-hover);
+        color: var(--text-basic);
+      }
 
-  <h2>6-1. Raw Sample — 데이터 실물 (6종 전체)</h2>
-  <p style="font-size:12.5px;color:#5c5c5c;margin:4px 0 10px">확보 데이터가 집계 수치가 아니라 실제 레코드로 존재함을 보이는 원본 발췌.
-  모든 레코드에 <code>_layer: raw</code>(실추출 표기)와 DB id·commit SHA·created_at 등 원천 컬럼이 유지된다.
-  발췌본: <code>00_summary/sample_excerpt/</code> 179건 (전량 151,470건에서 균등 간격 추출·마스킹 적용).</p>
-  <figure><img src="../02_current_actual_data/captures/capture_20_raw_sample_counts.png" alt="발췌본 건수">
-    <figcaption>⑳ 6종 발췌본 건수(총 179건)와 이슈 레코드 — 파일 실물 확인</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_21_raw_sample_issue.png" alt="이슈 레코드">
-    <figcaption>㉑ ① 유형 · <code>prd_issues</code> — 이슈 전체 필드(workspace·issue_type·status·priority·labels·created_at)</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_24_raw_code_diffs.png" alt="CR 레코드">
-    <figcaption>㉒ ② 유형 · <code>code_diffs</code> — 변경요청(CR)과 commit SHA 쌍. <code>diff.body</code> 에 "git-executor base..head 재계산" 표기(diff 본문은 DB 미저장)</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_26_raw_pr_reviews.png" alt="리뷰 레코드">
-    <figcaption>㉓ ② 유형 · <code>pr_reviews</code> — 리뷰와 리뷰코멘트 결합 레코드(file_path·lines·content·source/target SHA)</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_23_raw_cicd_logs.png" alt="CI 실행 레코드">
-    <figcaption>㉔ ③ 유형 · <code>cicd_logs</code> — piper 실행(run_iid·workflow_name·commit_sha·cr_key)과 스텝별 상태·소요시간</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_25_raw_ops_events.png" alt="감사 이벤트 레코드">
-    <figcaption>㉕ ④ 유형 · <code>ops_events</code> — 활동 감사 이벤트(verb·actor_id·correlation_id·data JSON)</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_22_raw_sample_preference.png" alt="선호쌍 레코드">
-    <figcaption>㉖ ⑥ 유형 · <code>preference_pairs</code> — <code>chosen_signal: cr_merged</code> vs <code>rejected_signal: cr_closed</code>(실서비스 채택/반려 신호),
-    <code>meta.pairing_rule</code> 에 구성 규칙과 원본 CR id 기록 — 합성 라벨이 아닌 실신호 기반임을 레코드로 확인 가능</figcaption></figure>
+      .spacer {
+        flex: 1;
+      }
 
-  <h2>7-1. 목표 도달 전망</h2>
-  <figure><img src="charts/10_target_projection.png" alt="목표 도달 전망">
-    <figcaption>현재 실측(캡처 ①~⑩ 근거) vs 2026-12 자사 전망 vs 공개 결합 vs 목표선. 가정: ①② 전체 저장소 인덱싱 시 보수 10× · ③ CI 로그 라인 수집 · ④ 자연 증가+Incident 수집(자사 단독 기준 기간 내 미도달, 2027 상반기 전망으로 표기).</figcaption></figure>
+      .context-sidebar {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        border-right: 1px solid var(--border-subtle);
+        background: var(--surface-base);
+      }
 
-  <h2>7-2. 합성 데이터 파일럿 실증 (데이터 축 ①·③)</h2>
-  <figure><img src="charts/12_synthetic_pilot.png" alt="합성 파일럿 결과">
-    <figcaption>파일럿 682건의 구성과 품질 게이트 결과 — 축① 태스크 4종 각 125건(통과 100%),
-    축③ 보안규칙 라벨링 182건(통과 96.2%). 접근제어·감사로깅에서 <b>규제 위반 14건을 자동 탐지</b>했으며,
-    이는 활용계획 축③ "보안 규칙 위반 자동 탐지 코드리뷰"의 동작 실증이다.</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_11_synthetic_pilot.png" alt="합성 파일럿 리포트">
-    <figcaption>⑪ 합성 파일럿 2종 — 축① 태스크 4종 500건(게이트 100%) + 축③ 보안규칙 라벨링 182건(96.2%, JSON 파싱 실패 7건 탈락). 시드는 자사 실데이터·실코드, 레코드마다 출처(seed_ref)와 <code>_layer=synthetic</code> 표기, 확보 데이터와 분리 보관.</figcaption></figure>
+      .sidebar-head {
+        display: flex;
+        height: 52px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 0 14px;
+      }
 
-  <h2>7-3. 공개 데이터 확보 가능분</h2>
-  <figure><img src="../02_current_actual_data/captures/capture_17_public_datasets.png" alt="공개 데이터 API 조회">
-    <figcaption>⑫ HuggingFace API 라이브 조회 — 라이선스·gated·행수·용량·split 분해. SWE-bench train 19,008(test/dev 2,519는 평가 오염 방지로 제외). the-stack-v2 규모는 gated 라 API 미제공 → 카드 스크린샷으로 증빙.</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_12_hf_stack_v2.png" alt="The Stack v2 카드">
-    <figcaption>⑬ The Stack v2 공식 카드 — full 67.5TB / dedup 32.1TB / train ~900B tokens (600+ 언어). 중간학습(Continued Pre-training) 주력 코퍼스.</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_13_hf_commitpackft.png" alt="CommitPackFT 카드">
-    <figcaption>⑭ CommitPackFT 공식 카드 — CommitPack(4TB, 350개 언어)의 고품질 필터링본 2GB · 277개 언어. 커밋-메시지 쌍 기반 명령수행 학습(SFT)용.</figcaption></figure>
+      .sidebar-title {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: 650;
+      }
 
-  <h2>8. CollabOps 플랫폼 UI (자체 플랫폼 실존 증빙)</h2>
-  <figure><img src="../02_current_actual_data/captures/capture_14_ui_issues.png" alt="이슈 보드">
-    <figcaption>⑮ 이슈 관리 — 활성 이슈 목록(담당자·상태·마감). 원천 데이터가 생성되는 화면.</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_15_ui_cr.png" alt="변경 요청 목록">
-    <figcaption>⑯ 변경 요청(CR) — 저장소·브랜치·리뷰 상태가 연결된 코드 변경 관리 화면.</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_16_ui_pipeline.png" alt="CI 파이프라인 실행">
-    <figcaption>⑰ CI/CD 파이프라인 실행 상세 — 단계 흐름(lint·test·security·build·deploy)과 소요 시간. CI 이벤트 데이터의 원천.</figcaption></figure>
-  <figure><img src="../02_current_actual_data/captures/capture_18_ui_agent_run.png" alt="에이전트 실행 타임라인">
-    <figcaption>⑱ AI 에이전트 실행 타임라인 — 스킬 33개 로드, ReAct 스텝·tool.call_gated·tool.audit 기록(20/20 스텝 성공). LLMOps 루프와 Agent Runtime 의 실행 증빙.</figcaption></figure>
+      .sidebar-search {
+        margin: 0 10px 12px;
+        display: flex;
+        height: 32px;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-sm);
+        padding: 0 10px;
+        color: var(--text-subtler);
+        background: var(--surface-muted);
+        font-size: 13px;
+      }
 
-</div>
-</body>
+      .sidebar-nav {
+        display: flex;
+        min-height: 0;
+        flex: 1;
+        flex-direction: column;
+        gap: 2px;
+        overflow: auto;
+        padding: 0 10px 14px;
+      }
+
+      .group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .group-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 20px;
+        color: var(--text-subtler);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .group-items {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .nav-row {
+        display: flex;
+        min-width: 0;
+        height: 32px;
+        align-items: center;
+        gap: 8px;
+        border-radius: var(--radius-xs);
+        padding: 0 10px;
+        color: var(--text-subtle);
+        text-decoration: none;
+      }
+
+      .nav-row:hover {
+        background: var(--feedback-hover);
+        color: var(--text-basic);
+      }
+
+      .nav-row.is-active {
+        background: var(--feedback-hover);
+        color: var(--text-basic);
+        font-weight: 600;
+      }
+
+      .nav-label {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 13px;
+      }
+
+      .room-row {
+        height: 56px;
+        align-items: flex-start;
+        padding: 8px 10px;
+      }
+
+      .room-content {
+        display: flex;
+        min-width: 0;
+        flex: 1;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .room-title-line {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .room-preview {
+        min-width: 0;
+        overflow: hidden;
+        color: var(--text-subtler);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 12px;
+        font-weight: 400;
+      }
+
+      .room-time {
+        margin-left: auto;
+        flex-shrink: 0;
+        color: var(--text-subtler);
+        font-size: 11px;
+        font-weight: 500;
+      }
+
+      .unread-badge {
+        display: inline-flex;
+        min-width: 18px;
+        height: 18px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: var(--danger);
+        color: var(--text-inverse);
+        padding: 0 5px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .nav-meta {
+        margin-left: auto;
+        flex-shrink: 0;
+        color: var(--text-subtler);
+        font-size: 12px;
+      }
+
+      .conversation {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        background: var(--surface-base);
+      }
+
+      .channel-header {
+        display: flex;
+        height: 52px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid var(--border-middle);
+        padding: 0 16px;
+      }
+
+      .header-main {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .channel-title {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .channel-desc {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--text-subtler);
+        font-size: 12px;
+      }
+
+      .header-actions {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .visibility-badge {
+        display: inline-flex;
+        height: 28px;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid var(--border-middle);
+        border-radius: var(--radius-sm);
+        background: var(--surface-base);
+        padding: 0 9px;
+        color: var(--text-subtle);
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      .avatar-stack {
+        display: flex;
+        align-items: center;
+        padding-left: 8px;
+      }
+
+      .avatar {
+        display: inline-grid;
+        width: 24px;
+        height: 24px;
+        place-items: center;
+        border: 1px solid var(--surface-base);
+        border-radius: 50%;
+        background: #dfe7f5;
+        color: #2f3d55;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .avatar + .avatar {
+        margin-left: -8px;
+      }
+
+      .avatar.agent {
+        background: var(--primary-soft);
+        color: var(--primary);
+      }
+
+      .avatar.viewer {
+        background: #e9f6ee;
+        color: var(--success);
+      }
+
+      .member-count {
+        color: var(--text-subtle);
+        font-size: 12px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 28px;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        border: 1px solid var(--border-middle);
+        border-radius: var(--radius-sm);
+        background: var(--surface-base);
+        color: var(--text-basic);
+        padding: 0 10px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .button:hover {
+        background: var(--feedback-hover);
+      }
+
+      .button.primary {
+        border-color: var(--primary);
+        background: var(--primary);
+        color: var(--text-inverse);
+      }
+
+      .button.primary:hover {
+        background: #2445aa;
+      }
+
+      .button.success {
+        border-color: #bde5ca;
+        background: var(--success-soft);
+        color: var(--success);
+      }
+
+      .button[disabled] {
+        cursor: default;
+        opacity: 0.6;
+      }
+
+      .invite-wrap {
+        position: relative;
+      }
+
+      .invite-popover {
+        position: absolute;
+        top: 34px;
+        right: 0;
+        z-index: 20;
+        display: none;
+        width: 236px;
+        border: 1px solid var(--border-middle);
+        border-radius: var(--radius-md);
+        background: var(--surface-raised);
+        box-shadow: 0 12px 30px rgb(15 23 42 / 0.14);
+        padding: 8px;
+      }
+
+      .invite-popover.is-open {
+        display: block;
+      }
+
+      .invite-row {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 8px;
+        border: 0;
+        border-radius: var(--radius-sm);
+        background: transparent;
+        padding: 8px;
+        text-align: left;
+      }
+
+      .invite-row:hover {
+        background: var(--feedback-hover);
+      }
+
+      .invite-name {
+        display: block;
+        color: var(--text-basic);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .invite-role {
+        display: block;
+        color: var(--text-subtler);
+        font-size: 12px;
+      }
+
+      .message-scroller {
+        min-height: 0;
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px 0 8px;
+      }
+
+      .date-divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 8px 16px 10px;
+        color: var(--text-subtler);
+        font-size: 12px;
+      }
+
+      .date-divider::before,
+      .date-divider::after {
+        height: 1px;
+        flex: 1;
+        background: var(--border-subtle);
+        content: "";
+      }
+
+      .message-row {
+        padding: 6px 12px 0;
+      }
+
+      .message-shell {
+        position: relative;
+        border-radius: var(--radius-md);
+        padding: 4px 12px 6px;
+      }
+
+      .message-shell:hover {
+        background: var(--feedback-hover);
+      }
+
+      .message-shell.system {
+        background: var(--surface-muted);
+      }
+
+      .message-header {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .message-author {
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .message-time {
+        color: var(--text-subtler);
+        font-size: 12px;
+      }
+
+      .message-body {
+        padding-left: 32px;
+      }
+
+      .message-text {
+        max-width: 760px;
+        margin: 6px 0 0;
+        color: var(--text-basic);
+        font-size: 14px;
+      }
+
+      .mention-pill,
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 1px 7px;
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      .mention-pill {
+        background: var(--primary-soft);
+        color: var(--primary);
+      }
+
+      .status-pill {
+        background: var(--surface-muted);
+        color: var(--text-subtle);
+      }
+
+      .status-pill.live {
+        background: var(--primary-soft);
+        color: var(--primary);
+      }
+
+      .status-pill.done {
+        background: var(--success-soft);
+        color: var(--success);
+      }
+
+      .activity-line {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 16px 6px;
+        color: var(--text-subtle);
+        font-size: 12px;
+      }
+
+      .activity-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--primary);
+        box-shadow: 0 0 0 4px rgb(49 84 201 / 0.12);
+      }
+
+      .action-card {
+        max-width: 720px;
+        margin-top: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border-middle);
+        border-radius: var(--radius-md);
+        background: var(--surface-raised);
+        box-shadow: var(--shadow-basic);
+      }
+
+      .card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 12px 14px;
+      }
+
+      .card-title {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .card-subtitle {
+        margin: 3px 0 0;
+        color: var(--text-subtle);
+        font-size: 12px;
+      }
+
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 14px;
+      }
+
+      .issue-preview {
+        border-left: 3px solid var(--primary);
+        padding-left: 12px;
+      }
+
+      .issue-title {
+        margin: 0 0 6px;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .issue-copy {
+        margin: 0;
+        color: var(--text-subtle);
+        font-size: 13px;
+      }
+
+      .slot {
+        display: grid;
+        grid-template-columns: 112px minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+      }
+
+      .slot-label {
+        color: var(--text-subtle);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .slot-options {
+        display: flex;
+        min-width: 0;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .option-button {
+        display: inline-flex;
+        min-height: 30px;
+        max-width: 100%;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid var(--border-middle);
+        border-radius: var(--radius-sm);
+        background: var(--surface-base);
+        color: var(--text-basic);
+        padding: 4px 9px;
+        text-align: left;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.3;
+        white-space: normal;
+      }
+
+      .option-button:hover {
+        background: var(--feedback-hover);
+      }
+
+      .option-button.is-selected {
+        border-color: #9fb1ff;
+        background: var(--primary-soft);
+        color: #233f9d;
+      }
+
+      .option-button.is-disabled {
+        color: var(--text-subtler);
+      }
+
+      .recommend {
+        border-radius: 999px;
+        background: #e7f7ee;
+        color: var(--success);
+        padding: 1px 6px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .selection-note {
+        display: flex;
+        min-height: 28px;
+        align-items: center;
+        gap: 8px;
+        border-top: 1px solid var(--border-subtle);
+        padding-top: 10px;
+        color: var(--text-subtle);
+        font-size: 12px;
+      }
+
+      .card-footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        border-top: 1px solid var(--border-subtle);
+        padding: 12px 14px;
+      }
+
+      .result-link {
+        display: none;
+        min-width: min(100%, 340px);
+        flex: 1;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        color: var(--success);
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      .result-link.is-visible {
+        display: flex;
+      }
+
+      .shortcut-card {
+        display: inline-flex;
+        max-width: 100%;
+        align-items: center;
+        gap: 7px;
+        border: 1px solid #bde5ca;
+        border-radius: var(--radius-sm);
+        background: var(--success-soft);
+        color: var(--success);
+        padding: 5px 9px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .shortcut-card:hover {
+        border-color: #8fd3a7;
+        background: #e3f5e9;
+      }
+
+      .shortcut-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .follow-up {
+        display: none;
+      }
+
+      .follow-up.is-visible {
+        display: block;
+      }
+
+      .composer-zone {
+        display: flex;
+        flex-shrink: 0;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 16px 12px;
+      }
+
+      .model-strip {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-subtle);
+        font-size: 12px;
+      }
+
+      .composer {
+        display: flex;
+        min-height: 44px;
+        align-items: flex-end;
+        gap: 8px;
+        border: 1px solid var(--border-middle);
+        border-radius: 24px;
+        background: var(--surface-base);
+        box-shadow: var(--shadow-basic);
+        padding: 6px 8px;
+      }
+
+      .composer-text {
+        min-width: 0;
+        flex: 1;
+        padding: 5px 4px;
+        color: var(--text-subtle);
+        font-size: 14px;
+      }
+
+      .details {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        border-left: 1px solid var(--border-subtle);
+        background: #fbfcfe;
+      }
+
+      .details-head {
+        display: flex;
+        height: 52px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border-middle);
+        padding: 0 14px;
+      }
+
+      .details-title {
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .details-body {
+        min-height: 0;
+        overflow: auto;
+      }
+
+      .panel-section {
+        padding: 14px;
+      }
+
+      .panel-section + .panel-section {
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .section-title {
+        margin: 0 0 10px;
+        color: var(--text-subtle);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .step-list,
+      .member-list,
+      .audit-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .step,
+      .member,
+      .audit {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .step-mark {
+        display: grid;
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        place-items: center;
+        border: 1px solid var(--border-middle);
+        border-radius: 50%;
+        color: var(--text-subtler);
+        font-size: 11px;
+      }
+
+      .step-mark.done {
+        border-color: #bde5ca;
+        background: var(--success-soft);
+        color: var(--success);
+      }
+
+      .step-mark.live {
+        border-color: #b7c5ff;
+        background: var(--primary-soft);
+        color: var(--primary);
+      }
+
+      .line-title {
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .line-caption {
+        display: block;
+        color: var(--text-subtler);
+        font-size: 12px;
+      }
+
+      .audit-value {
+        color: var(--text-subtle);
+        font-size: 12px;
+      }
+
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgb(15 23 42 / 0.22);
+        padding: 24px;
+      }
+
+      .modal-backdrop.is-open {
+        display: flex;
+      }
+
+      .modal {
+        display: flex;
+        width: min(860px, 100%);
+        max-height: min(720px, calc(100vh - 48px));
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid var(--border-middle);
+        border-radius: var(--radius-md);
+        background: var(--surface-base);
+        box-shadow: 0 24px 60px rgb(15 23 42 / 0.24);
+      }
+
+      .modal-head {
+        display: flex;
+        min-height: 52px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid var(--border-middle);
+        padding: 0 16px;
+      }
+
+      .modal-title {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .modal-body {
+        display: grid;
+        min-height: 0;
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 0;
+        overflow: auto;
+      }
+
+      .modal-form {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .modal-side {
+        border-left: 1px solid var(--border-subtle);
+        background: #fbfcfe;
+        padding: 16px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .field-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .field-label {
+        color: var(--text-subtle);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .field-help {
+        color: var(--text-subtler);
+        font-size: 12px;
+      }
+
+      .text-field,
+      .select-field,
+      .textarea-field {
+        width: 100%;
+        border: 1px solid var(--border-middle);
+        border-radius: var(--radius-sm);
+        background: var(--surface-base);
+        color: var(--text-basic);
+        outline: 0;
+      }
+
+      .text-field,
+      .select-field {
+        height: 34px;
+        padding: 0 10px;
+      }
+
+      .textarea-field {
+        min-height: 76px;
+        resize: vertical;
+        padding: 9px 10px;
+      }
+
+      .text-field:focus,
+      .select-field:focus,
+      .textarea-field:focus {
+        border-color: #9fb1ff;
+        box-shadow: 0 0 0 3px rgb(49 84 201 / 0.12);
+      }
+
+      .segmented {
+        display: inline-flex;
+        align-self: flex-start;
+        border: 1px solid var(--border-middle);
+        border-radius: var(--radius-sm);
+        background: var(--surface-base);
+        padding: 2px;
+      }
+
+      .segmented button {
+        min-height: 26px;
+        border: 0;
+        border-radius: var(--radius-xs);
+        background: transparent;
+        color: var(--text-subtle);
+        padding: 0 10px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .segmented button.is-active {
+        background: var(--feedback-hover);
+        color: var(--text-basic);
+      }
+
+      .chip-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .chip {
+        display: inline-flex;
+        min-height: 24px;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid var(--border-middle);
+        border-radius: 999px;
+        background: var(--surface-base);
+        padding: 0 8px;
+        color: var(--text-subtle);
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .candidate-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        padding: 4px;
+      }
+
+      .candidate-row {
+        display: flex;
+        width: 100%;
+        min-height: 44px;
+        align-items: center;
+        gap: 8px;
+        border: 0;
+        border-radius: var(--radius-sm);
+        background: transparent;
+        padding: 7px 8px;
+        text-align: left;
+      }
+
+      .candidate-row:hover {
+        background: var(--feedback-hover);
+      }
+
+      .candidate-row.is-selected {
+        background: var(--primary-soft);
+      }
+
+      .candidate-main {
+        min-width: 0;
+        flex: 1;
+      }
+
+      .candidate-title {
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--text-basic);
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .candidate-caption {
+        display: block;
+        overflow: hidden;
+        color: var(--text-subtler);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 12px;
+      }
+
+      .checkmark {
+        display: grid;
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        place-items: center;
+        border: 1px solid var(--border-middle);
+        border-radius: 50%;
+        color: transparent;
+      }
+
+      .candidate-row.is-selected .checkmark {
+        border-color: #9fb1ff;
+        background: var(--primary);
+        color: var(--text-inverse);
+      }
+
+      .modal-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-top: 1px solid var(--border-middle);
+        padding: 12px 16px;
+      }
+
+      .preview-block {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .preview-room {
+        display: flex;
+        min-width: 0;
+        gap: 8px;
+        border: 1px solid var(--border-middle);
+        border-radius: var(--radius-md);
+        background: var(--surface-base);
+        padding: 10px;
+      }
+
+      .preview-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--text-subtle);
+        font-size: 12px;
+      }
+
+      .toast {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 60;
+        display: none;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid #bde5ca;
+        border-radius: var(--radius-md);
+        background: var(--surface-base);
+        box-shadow: 0 16px 34px rgb(15 23 42 / 0.16);
+        color: var(--success);
+        padding: 10px 12px;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .toast.is-visible {
+        display: flex;
+      }
+
+      .icon {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
+      .icon.small {
+        width: 13px;
+        height: 13px;
+      }
+
+      @media (max-width: 1160px) {
+        .app {
+          grid-template-columns: 56px 260px minmax(0, 1fr);
+        }
+
+        .details {
+          display: none;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .app {
+          grid-template-columns: minmax(0, 1fr);
+          min-height: 100vh;
+        }
+
+        .rail,
+        .context-sidebar {
+          display: none;
+        }
+
+        .channel-header {
+          align-items: flex-start;
+          height: auto;
+          min-height: 58px;
+          padding: 10px 12px;
+        }
+
+        .header-actions {
+          flex-wrap: wrap;
+          justify-content: flex-end;
+        }
+
+        .channel-desc {
+          display: none;
+        }
+
+        .slot {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+
+        .message-body {
+          padding-left: 0;
+        }
+
+        .message-text,
+        .action-card {
+          max-width: 100%;
+        }
+
+        .modal-backdrop {
+          align-items: stretch;
+          padding: 12px;
+        }
+
+        .modal {
+          max-height: calc(100vh - 24px);
+        }
+
+        .modal-body {
+          grid-template-columns: 1fr;
+        }
+
+        .modal-side {
+          border-left: 0;
+          border-top: 1px solid var(--border-subtle);
+        }
+
+        .field-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="rail" aria-label="Workspace navigation">
+        <div class="workspace-mark">CO</div>
+        <button class="rail-button" type="button" title="Search" aria-label="Search">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        </button>
+        <button class="rail-button is-active" type="button" title="Chat" aria-label="Chat">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path></svg>
+        </button>
+        <button class="rail-button" type="button" title="Issues" aria-label="Issues">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M9 11h6"></path><path d="M9 15h6"></path><path d="M8 3h8l4 4v14H4V3z"></path><path d="M16 3v5h5"></path></svg>
+        </button>
+        <button class="rail-button" type="button" title="Docs" aria-label="Docs">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h11v18H6a2 2 0 0 1-2-1.5z"></path><path d="M8 7h6"></path><path d="M8 11h5"></path></svg>
+        </button>
+        <div class="spacer"></div>
+        <button class="rail-button" type="button" title="Settings" aria-label="Settings">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.8 1.8 0 0 0 .4 2l.1.1-2.1 2.1-.1-.1a1.8 1.8 0 0 0-2-.4 1.8 1.8 0 0 0-1.1 1.6V21h-3v-.2a1.8 1.8 0 0 0-1.1-1.6 1.8 1.8 0 0 0-2 .4l-.1.1-2.1-2.1.1-.1a1.8 1.8 0 0 0 .4-2 1.8 1.8 0 0 0-1.6-1.1H5v-3h.2a1.8 1.8 0 0 0 1.6-1.1 1.8 1.8 0 0 0-.4-2l-.1-.1 2.1-2.1.1.1a1.8 1.8 0 0 0 2 .4A1.8 1.8 0 0 0 11.6 5V4.8h3V5a1.8 1.8 0 0 0 1.1 1.6 1.8 1.8 0 0 0 2-.4l.1-.1 2.1 2.1-.1.1a1.8 1.8 0 0 0-.4 2 1.8 1.8 0 0 0 1.6 1.1h.2v3H21a1.8 1.8 0 0 0-1.6 1.1z"></path></svg>
+        </button>
+      </aside>
+
+      <aside class="context-sidebar" aria-label="Chat rooms">
+        <div class="sidebar-head">
+          <div class="sidebar-title">Chats</div>
+          <button class="icon-button" id="newChatButton" type="button" title="New chat" aria-label="New chat">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+          </button>
+        </div>
+        <div class="sidebar-search">
+          <svg class="icon small" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          Search conversations
+        </div>
+        <nav class="sidebar-nav" id="roomList">
+          <a class="nav-row room-row" id="createdRoomRow" href="#" data-room="created" hidden>
+            <span class="avatar agent" id="createdRoomAvatar">BI</span>
+            <span class="room-content">
+              <span class="room-title-line">
+                <span class="nav-label" id="createdRoomTitle">billionaire · 새 대화</span>
+                <span class="room-time">now</span>
+              </span>
+              <span class="room-preview" id="createdRoomPreview">새 대화가 생성되었습니다.</span>
+            </span>
+          </a>
+          <a class="nav-row room-row is-active" href="#" data-room="billionaire">
+            <span class="avatar agent">BI</span>
+            <span class="room-content">
+              <span class="room-title-line">
+                <span class="nav-label">billionaire · 릴리스 이슈 정리</span>
+                <span class="room-time">10:13</span>
+              </span>
+              <span class="room-preview">Issue #1824 생성 준비 · 권한 선택 대기</span>
+            </span>
+            <span class="unread-badge">2</span>
+          </a>
+          <a class="nav-row room-row" href="#" data-room="min">
+            <span class="avatar">MJ</span>
+            <span class="room-content">
+              <span class="room-title-line">
+                <span class="nav-label">Min Jang</span>
+                <span class="room-time">10:08</span>
+              </span>
+              <span class="room-preview">배포 로그는 billionaire 방에 같이 올려둘게요.</span>
+            </span>
+          </a>
+          <a class="nav-row room-row" href="#" data-room="release">
+            <span class="avatar">RR</span>
+            <span class="room-content">
+              <span class="room-title-line">
+                <span class="nav-label">release-room</span>
+                <span class="room-time">09:54</span>
+              </span>
+              <span class="room-preview">오늘 hotfix window는 15:00로 잡았습니다.</span>
+            </span>
+          </a>
+          <a class="nav-row room-row" href="#" data-room="jae">
+            <span class="avatar viewer">JP</span>
+            <span class="room-content">
+              <span class="room-title-line">
+                <span class="nav-label">Jae Park</span>
+                <span class="room-time">어제</span>
+              </span>
+              <span class="room-preview">이슈 생성되면 저한테 assign 해주세요.</span>
+            </span>
+          </a>
+          <a class="nav-row room-row" href="#" data-room="ops">
+            <span class="avatar agent">OP</span>
+            <span class="room-content">
+              <span class="room-title-line">
+                <span class="nav-label">Ops review</span>
+                <span class="room-time">어제</span>
+              </span>
+              <span class="room-preview">billionaire가 runbook 변경점을 정리했습니다.</span>
+            </span>
+          </a>
+          <a class="nav-row room-row" href="#" data-room="api">
+            <span class="avatar">AP</span>
+            <span class="room-content">
+              <span class="room-title-line">
+                <span class="nav-label">api-platform</span>
+                <span class="room-time">월</span>
+              </span>
+              <span class="room-preview">message target migration 순서 확인 필요</span>
+            </span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="conversation">
+        <header class="channel-header">
+          <div class="header-main">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="10" rx="3"></rect><path d="M12 8V5"></path><path d="M9 13h.01"></path><path d="M15 13h.01"></path><path d="M9 18l-2 2"></path><path d="M15 18l2 2"></path></svg>
+            <span class="channel-title" id="channelTitle">billionaire · 릴리스 이슈 정리</span>
+            <span class="channel-desc" id="visibilityDescription">Private agent room · invited members can view</span>
+          </div>
+          <div class="header-actions">
+            <div class="visibility-badge" id="accessBadge" aria-label="Access">
+              <svg class="icon small" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+              <span id="accessLabel">Private</span>
+            </div>
+            <div class="avatar-stack" aria-label="Members">
+              <span class="avatar">KK</span>
+              <span class="avatar agent">BI</span>
+              <span class="avatar">MJ</span>
+              <span class="avatar viewer js-jae">JP</span>
+              <span class="avatar js-sora" style="display: none">SL</span>
+            </div>
+            <span class="member-count" id="memberCount">4</span>
+            <div class="invite-wrap">
+              <button class="button" id="inviteButton" type="button">
+                <svg class="icon small" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M19 8v6"></path><path d="M22 11h-6"></path></svg>
+                Invite
+              </button>
+              <div class="invite-popover" id="invitePopover">
+                <button class="invite-row" type="button" data-invite="jae">
+                  <span class="avatar viewer">JP</span>
+                  <span>
+                    <span class="invite-name">Jae Park</span>
+                    <span class="invite-role" id="jaeInviteRole">Viewer · already invited</span>
+                  </span>
+                </button>
+                <button class="invite-row" type="button" data-invite="sora">
+                  <span class="avatar">SL</span>
+                  <span>
+                    <span class="invite-name">Sora Lee</span>
+                    <span class="invite-role">Member · api-platform</span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <button class="icon-button" type="button" id="resetButton" title="Reset flow" aria-label="Reset flow">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 4v6h6"></path></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="message-scroller" id="messageScroller">
+          <div class="date-divider">Today</div>
+
+          <div class="message-row">
+            <div class="message-shell system">
+              <div class="message-header">
+                <span class="avatar">CO</span>
+                <span class="message-author">CollabOps</span>
+                <span class="message-time">10:11</span>
+              </div>
+              <div class="message-body">
+                <p class="message-text" id="systemVisibilityText">This private agent room is visible to invited members. Min Jang and Jae Park joined this run.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-row">
+            <div class="message-shell">
+              <div class="message-header">
+                <span class="avatar">KK</span>
+                <span class="message-author">Kihoon Kim</span>
+                <span class="message-time">10:12</span>
+              </div>
+              <div class="message-body">
+                <p class="message-text">
+                  <span class="mention-pill">@billionaire</span>
+                  어제 배포 실패 로그를 보고 GitHub issue로 남길지 정리해줘. 필요하면 project도 추천해서 연결해줘.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-row">
+            <div class="message-shell">
+              <div class="message-header">
+                <span class="avatar agent">BI</span>
+                <span class="message-author">billionaire</span>
+                <span class="message-time">10:12</span>
+                <span class="status-pill live" id="runStatusPill">running</span>
+              </div>
+              <div class="message-body">
+                <p class="message-text" id="agentIntro">
+                  배포 실패는 migration 이후 API worker가 schema mismatch로 재시작을 반복한 케이스로 보입니다. 재현 단계와 영향 범위를 issue로 남기는 것을 추천합니다.
+                </p>
+
+                <section class="action-card" aria-label="Issue proposal card">
+                  <div class="card-top">
+                    <div>
+                      <h2 class="card-title">GitHub issue proposal</h2>
+                      <p class="card-subtitle" id="cardSubtitle">Project와 실행 권한을 확인하면 issue를 생성합니다.</p>
+                    </div>
+                    <span class="status-pill live" id="cardState">awaiting input</span>
+                  </div>
+
+                  <div class="card-body">
+                    <div class="issue-preview">
+                      <p class="issue-title">Release failed after Prisma migration</p>
+                      <p class="issue-copy">
+                        API worker restarted after migration `2026_08_06_add_message_target`.
+                        Add rollback guard, verify migration order, and update deploy checklist.
+                      </p>
+                    </div>
+
+                    <div class="slot">
+                      <div class="slot-label">Project</div>
+                      <div class="slot-options" role="group" aria-label="Project options">
+                        <button class="option-button is-selected" type="button" data-slot="project" data-value="Core Platform">
+                          Core Platform <span class="recommend">recommended</span>
+                        </button>
+                        <button class="option-button" type="button" data-slot="project" data-value="API Reliability">API Reliability</button>
+                        <button class="option-button" type="button" data-slot="project" data-value="Backlog">Backlog</button>
+                      </div>
+                    </div>
+
+                    <div class="slot">
+                      <div class="slot-label">Assignee</div>
+                      <div class="slot-options" role="group" aria-label="Assignee options">
+                        <button class="option-button is-selected" type="button" data-slot="assignee" data-value="Jae Park">
+                          Jae Park <span class="recommend">recommended</span>
+                        </button>
+                        <button class="option-button" type="button" data-slot="assignee" data-value="Min Jang">Min Jang</button>
+                        <button class="option-button" type="button" data-slot="assignee" data-value="Unassigned">Unassigned</button>
+                      </div>
+                    </div>
+
+                    <div class="slot">
+                      <div class="slot-label">Authority</div>
+                      <div class="slot-options" role="group" aria-label="Authority options">
+                        <button class="option-button is-selected" type="button" data-slot="authority" data-value="Kihoon Kim">
+                          Kihoon Kim · GitHub
+                        </button>
+                        <button class="option-button" type="button" data-slot="authority" data-value="Min Jang">
+                          Min Jang · approval required
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="selection-note" id="selectionNote">
+                      <svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>
+                      Core Platform에 Jae Park 담당으로, Kihoon Kim 권한을 사용합니다.
+                    </div>
+                  </div>
+
+                  <div class="card-footer">
+                    <div class="result-link" id="resultLink">
+                      <span>
+                        <svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>
+                        Created
+                      </span>
+                      <a class="shortcut-card" href="#issue-1824" aria-label="Open GitHub issue 1824">
+                        <svg class="icon small" viewBox="0 0 24 24"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                        GitHub #1824
+                      </a>
+                      <a class="shortcut-card" href="#core-platform-project" aria-label="Open Core Platform project">
+                        <svg class="icon small" viewBox="0 0 24 24"><path d="M3 6h18"></path><path d="M3 12h18"></path><path d="M3 18h18"></path></svg>
+                        Core Platform
+                      </a>
+                    </div>
+                    <div class="slot-options">
+                      <button class="button" type="button" id="dismissButton">Dismiss</button>
+                      <button class="button primary" type="button" id="createIssueButton">
+                        <svg class="icon small" viewBox="0 0 24 24"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+                        Create issue
+                      </button>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-row follow-up" id="followUpMessage">
+            <div class="message-shell">
+              <div class="message-header">
+                <span class="avatar agent">BI</span>
+                <span class="message-author">billionaire</span>
+                <span class="message-time">10:13</span>
+              </div>
+              <div class="message-body">
+                <p class="message-text" id="followUpText">
+                  Issue #1824를 생성했고 Core Platform project에 연결했습니다. 권한 주체는 Kihoon Kim으로 기록했습니다.
+                </p>
+                <div class="shortcut-bar">
+                  <a class="shortcut-card" href="#issue-1824">
+                    <svg class="icon small" viewBox="0 0 24 24"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                    Open GitHub #1824
+                  </a>
+                  <a class="shortcut-card" href="#core-platform-project">
+                    <svg class="icon small" viewBox="0 0 24 24"><path d="M3 6h18"></path><path d="M3 12h18"></path><path d="M3 18h18"></path></svg>
+                    Open Core Platform
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-row follow-up" id="nextUserMessage">
+            <div class="message-shell">
+              <div class="message-header">
+                <span class="avatar">KK</span>
+                <span class="message-author">Kihoon Kim</span>
+                <span class="message-time">10:14</span>
+              </div>
+              <div class="message-body">
+                <p class="message-text">
+                  <span class="mention-pill">@billionaire</span>
+                  그 이슈 기준으로 바로 다음에 해야 할 체크리스트도 이어서 정리해줘.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-row follow-up" id="nextAgentMessage">
+            <div class="message-shell">
+              <div class="message-header">
+                <span class="avatar agent">BI</span>
+                <span class="message-author">billionaire</span>
+                <span class="message-time">10:14</span>
+                <span class="status-pill done">next steps</span>
+              </div>
+              <div class="message-body">
+                <p class="message-text">
+                  다음 순서는 1) migration rollback guard 추가, 2) worker restart alert threshold 조정,
+                  3) deploy checklist에 schema compatibility 확인 항목 추가입니다. 이 내용은 방금 만든 issue #1824의 후속 체크리스트로 붙였습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-line" id="activityLine">
+          <span class="activity-dot"></span>
+          <strong>billionaire 작업 중</strong>
+          <span>로그 확인 완료</span>
+          <span>issue payload 작성 완료</span>
+          <span>카드 입력 대기</span>
+        </div>
+
+        <div class="composer-zone">
+          <div class="model-strip">
+            <span class="status-pill live">Agent mode</span>
+            <span>billionaire · review and issue proposal</span>
+          </div>
+          <div class="composer">
+            <button class="icon-button" type="button" title="Attach file" aria-label="Attach file">
+              <svg class="icon" viewBox="0 0 24 24"><path d="m21.4 11.6-8.5 8.5a6 6 0 0 1-8.5-8.5l8.5-8.5a4 4 0 0 1 5.7 5.7L10 17.4a2 2 0 0 1-2.8-2.8l8-8"></path></svg>
+            </button>
+            <div class="composer-text">
+              <span class="mention-pill">@billionaire</span>
+              후속 작업을 입력하세요
+            </div>
+            <button class="icon-button" type="button" title="Send" aria-label="Send">
+              <svg class="icon" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+            </button>
+          </div>
+        </div>
+      </main>
+
+      <aside class="details" aria-label="Agent run details">
+        <div class="details-head">
+          <div class="details-title">Run activity</div>
+          <button class="icon-button" type="button" title="Close panel" aria-label="Close panel">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+          </button>
+        </div>
+        <div class="details-body">
+          <section class="panel-section">
+            <h2 class="section-title">Current run</h2>
+            <ul class="step-list" id="stepList">
+              <li class="step">
+                <span class="step-mark done"><svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                <span>
+                  <span class="line-title">Read deploy log</span>
+                  <span class="line-caption">Completed at 10:12</span>
+                </span>
+              </li>
+              <li class="step">
+                <span class="step-mark done"><svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                <span>
+                  <span class="line-title">Draft issue payload</span>
+                  <span class="line-caption">Title, body, project suggestions</span>
+                </span>
+              </li>
+              <li class="step" id="executionStep">
+                <span class="step-mark live" id="executionMark"></span>
+                <span>
+                  <span class="line-title" id="executionTitle">Waiting for card action</span>
+                  <span class="line-caption" id="executionCaption">Project, assignee, authority selected</span>
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel-section">
+            <h2 class="section-title">Participants</h2>
+            <ul class="member-list">
+              <li class="member">
+                <span class="avatar">KK</span>
+                <span>
+                  <span class="line-title">Kihoon Kim</span>
+                  <span class="line-caption">Owner · authority available</span>
+                </span>
+              </li>
+              <li class="member">
+                <span class="avatar agent">BI</span>
+                <span>
+                  <span class="line-title">billionaire</span>
+                  <span class="line-caption">Agent · billionaire</span>
+                </span>
+              </li>
+              <li class="member">
+                <span class="avatar">MJ</span>
+                <span>
+                  <span class="line-title">Min Jang</span>
+                  <span class="line-caption">Member · GitHub connected</span>
+                </span>
+              </li>
+              <li class="member" id="jaePanelMember">
+                <span class="avatar viewer">JP</span>
+                <span>
+                  <span class="line-title">Jae Park</span>
+                  <span class="line-caption">Viewer · assignee suggestion</span>
+                </span>
+              </li>
+              <li class="member" id="soraPanelMember" style="display: none">
+                <span class="avatar">SL</span>
+                <span>
+                  <span class="line-title">Sora Lee</span>
+                  <span class="line-caption">Member · invited to private room</span>
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel-section">
+            <h2 class="section-title">Card audit</h2>
+            <ul class="audit-list">
+              <li class="audit">
+                <svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>
+                <span>
+                  <span class="line-title">Project</span>
+                  <span class="audit-value" id="auditProject">Core Platform</span>
+                </span>
+              </li>
+              <li class="audit">
+                <svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>
+                <span>
+                  <span class="line-title">Assignee</span>
+                  <span class="audit-value" id="auditAssignee">Jae Park</span>
+                </span>
+              </li>
+              <li class="audit">
+                <svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>
+                <span>
+                  <span class="line-title">Authority</span>
+                  <span class="audit-value" id="auditAuthority">Kihoon Kim</span>
+                </span>
+              </li>
+              <li class="audit" id="auditExecution">
+                <svg class="icon small" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+                <span>
+                  <span class="line-title">Execution</span>
+                  <span class="audit-value" id="auditExecutionValue">Not started</span>
+                </span>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </aside>
+    </div>
+
+    <div class="modal-backdrop" id="newChatModal" aria-hidden="true">
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="newChatTitle">
+        <div class="modal-head">
+          <h2 class="modal-title" id="newChatTitle">New conversation</h2>
+          <button class="icon-button" id="closeNewChatModal" type="button" title="Close" aria-label="Close">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-form">
+            <div class="field">
+              <span class="field-label">Type</span>
+              <div class="segmented" aria-label="Conversation type">
+                <button class="is-active" type="button" data-create-kind="agent">Agent room</button>
+                <button type="button" data-create-kind="normal">Regular room</button>
+                <button type="button" data-create-kind="dm">DM</button>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label class="field-label" for="newRoomName">Name</label>
+                <input class="text-field" id="newRoomName" type="text" value="릴리스 점검" />
+              </div>
+              <div class="field">
+                <span class="field-label">Access</span>
+                <div class="visibility-badge" aria-label="New room access">
+                  <svg class="icon small" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+                  <span>Private</span>
+                </div>
+                <span class="field-help">Invited members can view this room.</span>
+              </div>
+            </div>
+
+            <div class="field" id="agentPickerField">
+              <span class="field-label">Agent</span>
+              <div class="candidate-list">
+                <button class="candidate-row is-selected" type="button" data-create-agent="billionaire" data-avatar="BI">
+                  <span class="avatar agent">BI</span>
+                  <span class="candidate-main">
+                    <span class="candidate-title">billionaire</span>
+                    <span class="candidate-caption">Issue creation, project linking, deploy review</span>
+                  </span>
+                  <span class="checkmark"><svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                </button>
+                <button class="candidate-row" type="button" data-create-agent="Ops review" data-avatar="OP">
+                  <span class="avatar agent">OP</span>
+                  <span class="candidate-main">
+                    <span class="candidate-title">Ops review</span>
+                    <span class="candidate-caption">Runbooks, incident summaries, change review</span>
+                  </span>
+                  <span class="checkmark"><svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">Invite members</span>
+              <div class="candidate-list">
+                <button class="candidate-row is-selected" type="button" data-create-member="Min Jang" data-member-avatar="MJ">
+                  <span class="avatar">MJ</span>
+                  <span class="candidate-main">
+                    <span class="candidate-title">Min Jang</span>
+                    <span class="candidate-caption">Member · GitHub connected</span>
+                  </span>
+                  <span class="checkmark"><svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                </button>
+                <button class="candidate-row is-selected" type="button" data-create-member="Jae Park" data-member-avatar="JP">
+                  <span class="avatar viewer">JP</span>
+                  <span class="candidate-main">
+                    <span class="candidate-title">Jae Park</span>
+                    <span class="candidate-caption">Viewer · assignee candidate</span>
+                  </span>
+                  <span class="checkmark"><svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                </button>
+                <button class="candidate-row" type="button" data-create-member="Sora Lee" data-member-avatar="SL">
+                  <span class="avatar">SL</span>
+                  <span class="candidate-main">
+                    <span class="candidate-title">Sora Lee</span>
+                    <span class="candidate-caption">Member · api-platform</span>
+                  </span>
+                  <span class="checkmark"><svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="newRoomPrompt">First message</label>
+              <textarea class="textarea-field" id="newRoomPrompt">이번 릴리스에서 빠진 체크리스트를 보고 issue로 만들 항목을 추천해줘.</textarea>
+            </div>
+          </div>
+
+          <aside class="modal-side">
+            <div class="preview-block">
+              <span class="field-label">Preview</span>
+              <div class="preview-room">
+                <span class="avatar agent" id="modalPreviewAvatar">BI</span>
+                <span class="room-content">
+                  <span class="room-title-line">
+                    <span class="nav-label" id="modalPreviewTitle">billionaire · 릴리스 점검</span>
+                    <span class="room-time">now</span>
+                  </span>
+                  <span class="room-preview" id="modalPreviewCopy">첫 메시지를 보내면 대화방 목록 맨 위에 표시됩니다.</span>
+                </span>
+              </div>
+              <div class="preview-meta">
+                <div class="meta-row">
+                  <span>Kind</span>
+                  <strong id="modalPreviewKind">Agent room</strong>
+                </div>
+                <div class="meta-row">
+                  <span>Access</span>
+                  <strong id="modalPreviewVisibility">Private</strong>
+                </div>
+                <div class="meta-row">
+                  <span>Members</span>
+                  <strong id="modalPreviewMembers">3</strong>
+                </div>
+                <div class="meta-row">
+                  <span>Agent target</span>
+                  <strong id="modalPreviewTarget">@billionaire</strong>
+                </div>
+              </div>
+              <div class="chip-list" id="modalPreviewChips">
+                <span class="chip">Kihoon Kim</span>
+                <span class="chip">billionaire</span>
+                <span class="chip">Min Jang</span>
+                <span class="chip">Jae Park</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="modal-footer">
+          <span class="field-help" id="newChatFootnote">Private rooms require invitation before access.</span>
+          <div class="slot-options">
+            <button class="button" id="cancelNewChat" type="button">Cancel</button>
+            <button class="button primary" id="createNewChat" type="button">
+              <svg class="icon small" viewBox="0 0 24 24"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+              Create
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast">
+      <svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>
+      <span id="toastText">Conversation created</span>
+    </div>
+
+    <script>
+      const initialState = {
+        project: "Core Platform",
+        assignee: "Jae Park",
+        authority: "Kihoon Kim",
+        created: false,
+        continued: false,
+        jaeInvited: true,
+        soraInvited: false,
+      };
+
+      const state = { ...initialState };
+      const createState = {
+        kind: "agent",
+        agent: "billionaire",
+        agentAvatar: "BI",
+        members: new Set(["Min Jang", "Jae Park"]),
+      };
+
+      const roomList = document.getElementById("roomList");
+      const messageScroller = document.getElementById("messageScroller");
+      const detailsBody = document.querySelector(".details-body");
+      const activityLine = document.getElementById("activityLine");
+      const channelTitle = document.getElementById("channelTitle");
+      const accessBadge = document.getElementById("accessBadge");
+      const accessLabel = document.getElementById("accessLabel");
+      const inviteButton = document.getElementById("inviteButton");
+      const invitePopover = document.getElementById("invitePopover");
+      const resetButton = document.getElementById("resetButton");
+      const memberCount = document.getElementById("memberCount");
+      const avatarStack = document.querySelector(".avatar-stack");
+      const modelStrip = document.querySelector(".model-strip");
+      const composerText = document.querySelector(".composer-text");
+      const newChatButton = document.getElementById("newChatButton");
+      const newChatModal = document.getElementById("newChatModal");
+      const closeNewChatModal = document.getElementById("closeNewChatModal");
+      const cancelNewChat = document.getElementById("cancelNewChat");
+      const createNewChat = document.getElementById("createNewChat");
+      const newRoomName = document.getElementById("newRoomName");
+      const newRoomPrompt = document.getElementById("newRoomPrompt");
+      const agentPickerField = document.getElementById("agentPickerField");
+      const createdRoomRow = document.getElementById("createdRoomRow");
+      const createdRoomAvatar = document.getElementById("createdRoomAvatar");
+      const createdRoomTitle = document.getElementById("createdRoomTitle");
+      const createdRoomPreview = document.getElementById("createdRoomPreview");
+      const toast = document.getElementById("toast");
+      const toastText = document.getElementById("toastText");
+
+      const billionaireMessagesTemplate = messageScroller.innerHTML;
+      const billionaireDetailsTemplate = detailsBody.innerHTML;
+      let activeRoom = "billionaire";
+      let toastTimer = null;
+
+      const rooms = {
+        min: {
+          title: "Min Jang",
+          desc: "DM · GitHub connected",
+          kind: "dm",
+          avatar: "MJ",
+          members: ["Kihoon Kim", "Min Jang"],
+          activity: '<span class="activity-dot"></span><strong>Min Jang</strong><span>last active 10:08</span>',
+          model: "Direct message",
+          composer: "Min Jang에게 메시지 보내기",
+          messages: [
+            { author: "Min Jang", avatar: "MJ", time: "10:05", text: "배포 로그는 billionaire 방에 같이 올려둘게요." },
+            { author: "Kihoon Kim", avatar: "KK", time: "10:08", text: "좋아요. 생성될 issue는 Jae한테 assign하면 될 것 같아요." },
+          ],
+        },
+        release: {
+          title: "release-room",
+          desc: "Public room · 12 members",
+          kind: "room",
+          avatar: "RR",
+          members: ["Kihoon Kim", "Min Jang", "Jae Park", "Sora Lee"],
+          activity: '<span class="activity-dot"></span><strong>release-room</strong><span>hotfix window 15:00</span>',
+          model: "Regular room",
+          composer: "release-room에 메시지 보내기",
+          messages: [
+            { author: "Sora Lee", avatar: "SL", time: "09:51", text: "오늘 hotfix window는 15:00로 잡았습니다." },
+            { author: "Min Jang", avatar: "MJ", time: "09:54", text: "배포 전 migration order만 다시 확인하겠습니다." },
+          ],
+        },
+        jae: {
+          title: "Jae Park",
+          desc: "DM · assignee candidate",
+          kind: "dm",
+          avatar: "JP",
+          members: ["Kihoon Kim", "Jae Park"],
+          activity: '<span class="activity-dot"></span><strong>Jae Park</strong><span>last active yesterday</span>',
+          model: "Direct message",
+          composer: "Jae Park에게 메시지 보내기",
+          messages: [
+            { author: "Jae Park", avatar: "JP", time: "어제", text: "이슈 생성되면 저한테 assign 해주세요." },
+            { author: "Kihoon Kim", avatar: "KK", time: "어제", text: "확인했습니다. billionaire 카드에서 선택해둘게요." },
+          ],
+        },
+        ops: {
+          title: "Ops review",
+          desc: "Agent room · private",
+          kind: "agent",
+          avatar: "OP",
+          members: ["Kihoon Kim", "billionaire", "Sora Lee"],
+          activity: '<span class="activity-dot"></span><strong>billionaire</strong><span>runbook review completed</span>',
+          model: "billionaire · ops review",
+          composer: "@billionaire runbook 점검 요청",
+          messages: [
+            { author: "Kihoon Kim", avatar: "KK", time: "어제", text: "@billionaire runbook 변경점만 요약해줘." },
+            { author: "billionaire", avatar: "BI", agent: true, time: "어제", text: "장애 대응 순서에서 rollback owner와 deploy verifier가 분리되었습니다." },
+          ],
+        },
+        api: {
+          title: "api-platform",
+          desc: "Private room · 8 members",
+          kind: "room",
+          avatar: "AP",
+          members: ["Kihoon Kim", "Min Jang", "Sora Lee"],
+          activity: '<span class="activity-dot"></span><strong>api-platform</strong><span>migration order pending</span>',
+          model: "Regular room",
+          composer: "api-platform에 메시지 보내기",
+          messages: [
+            { author: "Sora Lee", avatar: "SL", time: "월", text: "message target migration 순서 확인 필요합니다." },
+            { author: "Kihoon Kim", avatar: "KK", time: "월", text: "participant backfill 이후 target backfill로 잡겠습니다." },
+          ],
+        },
+      };
+
+      function setText(id, text) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      }
+
+      function setHtml(id, html) {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = html;
+      }
+
+      function setVisible(el, visible) {
+        if (!el) return;
+        el.classList.toggle("is-visible", visible);
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function initials(name) {
+        const parts = String(name).trim().split(/\s+/).filter(Boolean);
+        if (parts.length >= 2) return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
+        return String(name).trim().slice(0, 2).toUpperCase() || "CH";
+      }
+
+      function messageRow(message) {
+        const avatarClass = message.agent ? "avatar agent" : "avatar";
+        return `
+          <div class="message-row">
+            <div class="message-shell">
+              <div class="message-header">
+                <span class="${avatarClass}">${escapeHtml(message.avatar)}</span>
+                <span class="message-author">${escapeHtml(message.author)}</span>
+                <span class="message-time">${escapeHtml(message.time)}</span>
+              </div>
+              <div class="message-body">
+                <p class="message-text">${escapeHtml(message.text)}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      function renderGenericMessages(room) {
+        return `<div class="date-divider">Today</div>${room.messages.map(messageRow).join("")}`;
+      }
+
+      function renderGenericDetails(room) {
+        const members = room.members
+          .map((name) => {
+            const agent = name === "billionaire";
+            return `
+              <li class="member">
+                <span class="avatar${agent ? " agent" : ""}">${agent ? "BI" : escapeHtml(initials(name))}</span>
+                <span>
+                  <span class="line-title">${escapeHtml(name)}</span>
+                  <span class="line-caption">${agent ? "Agent" : "Member"}</span>
+                </span>
+              </li>
+            `;
+          })
+          .join("");
+        return `
+          <section class="panel-section">
+            <h2 class="section-title">Participants</h2>
+            <ul class="member-list">${members}</ul>
+          </section>
+          <section class="panel-section">
+            <h2 class="section-title">Conversation state</h2>
+            <ul class="audit-list">
+              <li class="audit">
+                <svg class="icon small" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg>
+                <span>
+                  <span class="line-title">Type</span>
+                  <span class="audit-value">${escapeHtml(room.kind)}</span>
+                </span>
+              </li>
+              <li class="audit">
+                <svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>
+                <span>
+                  <span class="line-title">Sorted by</span>
+                  <span class="audit-value">last activity</span>
+                </span>
+              </li>
+            </ul>
+          </section>
+        `;
+      }
+
+      function renderSelections() {
+        messageScroller.querySelectorAll("[data-slot]").forEach((button) => {
+          const slot = button.dataset.slot;
+          const selected = button.dataset.value === state[slot];
+          button.classList.toggle("is-selected", selected);
+        });
+
+        setHtml(
+          "selectionNote",
+          '<svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>' +
+            `${state.project}에 ${state.assignee} 담당으로, ${state.authority} 권한을 사용합니다.`,
+        );
+        setText("auditProject", state.project);
+        setText("auditAssignee", state.assignee);
+        setText("auditAuthority", state.authority);
+      }
+
+      function renderAccess() {
+        accessLabel.textContent = "Private";
+        setText("visibilityDescription", "Private agent room · invited members can view");
+        setText("systemVisibilityText", "This private agent room is visible to invited members. Min Jang and Jae Park joined this run.");
+      }
+
+      function renderInvites() {
+        const jaeElements = Array.from(document.querySelectorAll(".js-jae"));
+        jaeElements.forEach((el) => {
+          el.style.display = state.jaeInvited ? "inline-grid" : "none";
+        });
+        const soraElements = Array.from(document.querySelectorAll(".js-sora"));
+        soraElements.forEach((el) => {
+          el.style.display = state.soraInvited ? "inline-grid" : "none";
+        });
+
+        const jaePanelMember = document.getElementById("jaePanelMember");
+        if (jaePanelMember) jaePanelMember.style.display = state.jaeInvited ? "flex" : "none";
+        const soraPanelMember = document.getElementById("soraPanelMember");
+        if (soraPanelMember) soraPanelMember.style.display = state.soraInvited ? "flex" : "none";
+
+        const count = 3 + (state.jaeInvited ? 1 : 0) + (state.soraInvited ? 1 : 0);
+        const invitedNames = ["Min Jang"];
+        if (state.jaeInvited) invitedNames.push("Jae Park");
+        if (state.soraInvited) invitedNames.push("Sora Lee");
+        setText("memberCount", String(count));
+        setText("jaeInviteRole", state.jaeInvited ? "Viewer · already invited" : "Viewer · invite");
+        setText("systemVisibilityText", `This private agent room is visible to invited members: ${invitedNames.join(", ")}.`);
+      }
+
+      function renderExecution() {
+        const cardState = document.getElementById("cardState");
+        const runStatusPill = document.getElementById("runStatusPill");
+        const createIssueButton = document.getElementById("createIssueButton");
+        const resultLink = document.getElementById("resultLink");
+        const followUpMessage = document.getElementById("followUpMessage");
+        const nextUserMessage = document.getElementById("nextUserMessage");
+        const nextAgentMessage = document.getElementById("nextAgentMessage");
+        const executionMark = document.getElementById("executionMark");
+        if (!cardState || !runStatusPill || !createIssueButton) return;
+
+        if (state.created) {
+          cardState.textContent = "completed";
+          cardState.classList.remove("live");
+          cardState.classList.add("done");
+          runStatusPill.textContent = "completed";
+          runStatusPill.classList.remove("live");
+          runStatusPill.classList.add("done");
+          createIssueButton.textContent = "Created";
+          createIssueButton.classList.remove("primary");
+          createIssueButton.classList.add("success");
+          createIssueButton.disabled = true;
+          setVisible(resultLink, true);
+          followUpMessage?.classList.add("is-visible");
+          nextUserMessage?.classList.toggle("is-visible", state.continued);
+          nextAgentMessage?.classList.toggle("is-visible", state.continued);
+          setText("cardSubtitle", "Issue가 생성되었고 선택한 project에 연결되었습니다.");
+          activityLine.innerHTML =
+            state.continued
+              ? '<span class="activity-dot"></span><strong>billionaire 진행 중</strong><span>next checklist appended</span><span>issue shortcut available</span>'
+              : '<span class="activity-dot"></span><strong>billionaire 완료</strong><span>GitHub issue created</span><span>shortcut added</span>';
+          setText("executionTitle", "Issue created");
+          setText("executionCaption", `Requested by Kihoon Kim · authority ${state.authority}`);
+          setText("auditExecutionValue", state.continued ? "Succeeded · checklist appended" : "Succeeded · GitHub #1824");
+          executionMark?.classList.remove("live");
+          executionMark?.classList.add("done");
+          if (executionMark) {
+            executionMark.innerHTML = '<svg class="icon small" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>';
+          }
+        } else {
+          cardState.textContent = "awaiting input";
+          cardState.classList.add("live");
+          cardState.classList.remove("done");
+          runStatusPill.textContent = "running";
+          runStatusPill.classList.add("live");
+          runStatusPill.classList.remove("done");
+          createIssueButton.innerHTML = '<svg class="icon small" viewBox="0 0 24 24"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>Create issue';
+          createIssueButton.classList.add("primary");
+          createIssueButton.classList.remove("success");
+          createIssueButton.disabled = false;
+          setVisible(resultLink, false);
+          followUpMessage?.classList.remove("is-visible");
+          nextUserMessage?.classList.remove("is-visible");
+          nextAgentMessage?.classList.remove("is-visible");
+          setText("cardSubtitle", "Project와 실행 권한을 확인하면 issue를 생성합니다.");
+          activityLine.innerHTML =
+            '<span class="activity-dot"></span><strong>billionaire 작업 중</strong><span>로그 확인 완료</span><span>issue payload 작성 완료</span><span>카드 입력 대기</span>';
+          setText("executionTitle", "Waiting for card action");
+          setText("executionCaption", "Project, assignee, authority selected");
+          setText("auditExecutionValue", "Not started");
+          executionMark?.classList.add("live");
+          executionMark?.classList.remove("done");
+          if (executionMark) executionMark.innerHTML = "";
+        }
+      }
+
+      function renderAgentRoom() {
+        channelTitle.textContent = "billionaire · 릴리스 이슈 정리";
+        messageScroller.innerHTML = billionaireMessagesTemplate;
+        detailsBody.innerHTML = billionaireDetailsTemplate;
+        accessBadge.style.display = "inline-flex";
+        inviteButton.style.display = "inline-flex";
+        avatarStack.style.display = "flex";
+        memberCount.hidden = false;
+        modelStrip.innerHTML = '<span class="status-pill live">Agent mode</span><span>billionaire · review and issue proposal</span>';
+        composerText.innerHTML = '<span class="mention-pill">@billionaire</span> 후속 작업을 입력하세요';
+        renderSelections();
+        renderAccess();
+        renderInvites();
+        renderExecution();
+      }
+
+      function renderRoom(roomId) {
+        if (roomId === "billionaire") {
+          renderAgentRoom();
+          return;
+        }
+        const room = rooms[roomId];
+        if (!room) return;
+        channelTitle.textContent = room.title;
+        setText("visibilityDescription", room.desc);
+        messageScroller.innerHTML = renderGenericMessages(room);
+        detailsBody.innerHTML = renderGenericDetails(room);
+        activityLine.innerHTML = room.activity;
+        modelStrip.innerHTML = `<span class="status-pill">${escapeHtml(room.model)}</span><span>${escapeHtml(room.desc)}</span>`;
+        composerText.textContent = room.composer;
+        const isDm = room.kind === "dm";
+        accessBadge.style.display = "inline-flex";
+        accessLabel.textContent = room.desc.toLowerCase().includes("public") ? "Public" : "Private";
+        inviteButton.style.display = isDm ? "none" : "inline-flex";
+        avatarStack.style.display = isDm ? "none" : "flex";
+        memberCount.hidden = isDm;
+        if (!isDm) memberCount.textContent = String(room.members.length);
+      }
+
+      function selectRoom(roomId, row) {
+        activeRoom = roomId;
+        roomList.querySelectorAll(".room-row").forEach((item) => {
+          item.classList.toggle("is-active", item === row);
+        });
+        renderRoom(roomId);
+      }
+
+      function showToast(text) {
+        toastText.textContent = text;
+        toast.classList.add("is-visible");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 1800);
+      }
+
+      function renderCreateModal() {
+        newChatModal.querySelectorAll("[data-create-kind]").forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.createKind === createState.kind);
+        });
+        newChatModal.querySelectorAll("[data-create-agent]").forEach((button) => {
+          button.classList.toggle("is-selected", button.dataset.createAgent === createState.agent);
+        });
+        newChatModal.querySelectorAll("[data-create-member]").forEach((button) => {
+          button.classList.toggle("is-selected", createState.members.has(button.dataset.createMember));
+        });
+
+        const isAgent = createState.kind === "agent";
+        const isDm = createState.kind === "dm";
+        agentPickerField.style.display = isAgent ? "flex" : "none";
+        const selectedMembers = Array.from(createState.members);
+        const visibleMembers = isDm ? selectedMembers.slice(0, 1) : selectedMembers;
+        const name = newRoomName.value.trim();
+        const roomName = isDm
+          ? visibleMembers[0] || "New DM"
+          : isAgent
+            ? `${createState.agent} · ${name || "새 대화"}`
+            : name || visibleMembers.join(", ") || "New room";
+        const avatar = isAgent ? createState.agentAvatar : initials(roomName);
+        const kindLabel = isAgent ? "Agent room" : isDm ? "DM" : "Regular room";
+        const memberTotal = 1 + visibleMembers.length + (isAgent ? 1 : 0);
+        document.getElementById("modalPreviewAvatar").textContent = avatar;
+        document.getElementById("modalPreviewAvatar").classList.toggle("agent", isAgent);
+        setText("modalPreviewTitle", roomName);
+        setText("modalPreviewCopy", newRoomPrompt.value.trim() || "첫 메시지를 입력하지 않았습니다.");
+        setText("modalPreviewKind", kindLabel);
+        setText("modalPreviewVisibility", "Private");
+        setText("modalPreviewMembers", String(memberTotal));
+        setText("modalPreviewTarget", isAgent ? `@${createState.agent}` : "-");
+        document.getElementById("modalPreviewChips").innerHTML = [
+          "Kihoon Kim",
+          ...(isAgent ? [createState.agent] : []),
+          ...visibleMembers,
+        ]
+          .map((item) => `<span class="chip">${escapeHtml(item)}</span>`)
+          .join("");
+      }
+
+      function openNewChatModal() {
+        newChatModal.classList.add("is-open");
+        newChatModal.setAttribute("aria-hidden", "false");
+        renderCreateModal();
+        window.setTimeout(() => newRoomName.focus(), 0);
+      }
+
+      function closeModal() {
+        newChatModal.classList.remove("is-open");
+        newChatModal.setAttribute("aria-hidden", "true");
+      }
+
+      function createRoomFromModal() {
+        const selectedMembers = Array.from(createState.members);
+        const visibleMembers = createState.kind === "dm" ? selectedMembers.slice(0, 1) : selectedMembers;
+        const name = newRoomName.value.trim();
+        const isAgent = createState.kind === "agent";
+        const isDm = createState.kind === "dm";
+        const title = isDm
+          ? visibleMembers[0] || "New DM"
+          : isAgent
+            ? `${createState.agent} · ${name || "새 대화"}`
+            : name || "새 대화방";
+        const preview = newRoomPrompt.value.trim() || "새 대화가 생성되었습니다.";
+        const avatar = isAgent ? createState.agentAvatar : initials(title);
+
+        createdRoomRow.hidden = false;
+        createdRoomAvatar.textContent = avatar;
+        createdRoomAvatar.classList.toggle("agent", isAgent);
+        createdRoomTitle.textContent = title;
+        createdRoomPreview.textContent = preview;
+        rooms.created = {
+          title,
+          desc: `${isAgent ? "Agent room" : isDm ? "DM" : "Regular room"} · private`,
+          kind: isAgent ? "agent" : isDm ? "dm" : "room",
+          avatar,
+          members: ["Kihoon Kim", ...(isAgent ? [createState.agent] : []), ...visibleMembers],
+          activity: `<span class="activity-dot"></span><strong>${escapeHtml(title)}</strong><span>created just now</span>`,
+          model: isAgent ? `${createState.agent} · new request` : isDm ? "Direct message" : "Regular room",
+          composer: isAgent ? `@${createState.agent}에게 후속 요청` : `${title}에 메시지 보내기`,
+          messages: [
+            { author: "Kihoon Kim", avatar: "KK", time: "now", text: preview },
+            ...(isAgent
+              ? [{ author: createState.agent, avatar: createState.agentAvatar, agent: true, time: "now", text: "요청을 받았습니다. 필요한 항목을 확인하고 제안 카드로 정리하겠습니다." }]
+              : []),
+          ],
+        };
+        closeModal();
+        selectRoom("created", createdRoomRow);
+        showToast(`${title} created`);
+      }
+
+      roomList.addEventListener("click", (event) => {
+        const row = event.target.closest(".room-row");
+        if (!row) return;
+        event.preventDefault();
+        selectRoom(row.dataset.room, row);
+      });
+
+      inviteButton.addEventListener("click", () => {
+        invitePopover.classList.toggle("is-open");
+      });
+
+      document.querySelectorAll("[data-invite]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = button.dataset.invite;
+          if (target === "jae") state.jaeInvited = !state.jaeInvited;
+          if (target === "sora") state.soraInvited = !state.soraInvited;
+          invitePopover.classList.remove("is-open");
+          renderInvites();
+        });
+      });
+
+      messageScroller.addEventListener("click", (event) => {
+        const optionButton = event.target.closest("[data-slot]");
+        if (optionButton && activeRoom === "billionaire") {
+          const slot = optionButton.dataset.slot;
+          state[slot] = optionButton.dataset.value;
+          state.created = false;
+          state.continued = false;
+          renderSelections();
+          renderExecution();
+          return;
+        }
+
+        const createIssueButton = event.target.closest("#createIssueButton");
+        if (createIssueButton && activeRoom === "billionaire") {
+          if (state.created) return;
+          createIssueButton.disabled = true;
+          createIssueButton.textContent = "Creating...";
+          setText("cardState", "executing");
+          setText("auditExecutionValue", "Running");
+          window.setTimeout(() => {
+            state.created = true;
+            state.continued = false;
+            renderExecution();
+            messageScroller.scrollTop = messageScroller.scrollHeight;
+            window.setTimeout(() => {
+              if (activeRoom !== "billionaire" || !state.created) return;
+              state.continued = true;
+              renderExecution();
+              messageScroller.scrollTop = messageScroller.scrollHeight;
+            }, 900);
+          }, 500);
+          return;
+        }
+
+        const dismissButton = event.target.closest("#dismissButton");
+        if (dismissButton && activeRoom === "billionaire") {
+          setText("cardState", "dismissed");
+          dismissButton.textContent = "Dismissed";
+          dismissButton.disabled = true;
+        }
+      });
+
+      resetButton.addEventListener("click", () => {
+        Object.assign(state, initialState);
+        invitePopover.classList.remove("is-open");
+        selectRoom("billionaire", roomList.querySelector('[data-room="billionaire"]'));
+      });
+
+      newChatButton.addEventListener("click", openNewChatModal);
+      closeNewChatModal.addEventListener("click", closeModal);
+      cancelNewChat.addEventListener("click", closeModal);
+      createNewChat.addEventListener("click", createRoomFromModal);
+      newRoomName.addEventListener("input", renderCreateModal);
+      newRoomPrompt.addEventListener("input", renderCreateModal);
+
+      newChatModal.addEventListener("click", (event) => {
+        if (event.target === newChatModal) {
+          closeModal();
+          return;
+        }
+        const kindButton = event.target.closest("[data-create-kind]");
+        if (kindButton) {
+          createState.kind = kindButton.dataset.createKind;
+          if (createState.kind === "dm") {
+            createState.members = new Set(Array.from(createState.members).slice(0, 1));
+          }
+          renderCreateModal();
+          return;
+        }
+        const agentButton = event.target.closest("[data-create-agent]");
+        if (agentButton) {
+          createState.agent = agentButton.dataset.createAgent;
+          createState.agentAvatar = agentButton.dataset.avatar;
+          renderCreateModal();
+          return;
+        }
+        const memberButton = event.target.closest("[data-create-member]");
+        if (memberButton) {
+          const member = memberButton.dataset.createMember;
+          if (createState.kind === "dm") {
+            createState.members = new Set([member]);
+          } else if (createState.members.has(member)) createState.members.delete(member);
+          else createState.members.add(member);
+          renderCreateModal();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && newChatModal.classList.contains("is-open")) closeModal();
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!invitePopover.contains(event.target) && !inviteButton.contains(event.target)) {
+          invitePopover.classList.remove("is-open");
+        }
+      });
+
+      renderAgentRoom();
+      renderCreateModal();
+    </script>
+  </body>
 </html>
