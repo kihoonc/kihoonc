@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>컨벤션 준수율 리포트</title>
+<style>
+:root {
+  --bg:#ffffff; --bg-surface:#f8f7fa; --bg-subtle:#f0eff4; --bg-hover:#f0eff4;
+  --text-bold:#2b2b2b; --text:#444444; --text-subtle:#5c5c5c; --text-subtler:#7a7a7a;
+  --border-subtle:#e3e1eb; --border:#cfcdd9;
+  --brand:#5b6ee1; --brand-soft:#f2f4ff; --link:#2563eb;
+  --danger:#de3412; --danger-bg:#fdefec; --success:#228738; --warning:#9e6a00; --warning-bg:#fff3db;
+  --sans:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Segoe UI","Noto Sans KR",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); font-size:14px; line-height:1.6; }
+.page { max-width:960px; margin:0 auto; padding:44px 28px 72px; }
+
+.eyebrow { font-size:11px; font-weight:600; letter-spacing:.14em; color:var(--brand); text-transform:uppercase; margin-bottom:8px; }
+h1 { color:var(--text-bold); font-size:27px; margin:0 0 6px; text-wrap:balance; }
+.meta { color:var(--text-subtler); font-size:12.5px; margin-bottom:30px; }
+
+.tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin-bottom:40px; }
+.tile { background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:8px; padding:12px 14px; }
+.tile .k { font-size:11px; font-weight:600; letter-spacing:.06em; color:var(--text-subtler); text-transform:uppercase; }
+.tile .v { font-size:24px; font-weight:700; color:var(--text-bold); font-variant-numeric:tabular-nums; line-height:1.2; margin:2px 0; }
+.tile .s { font-size:11px; color:var(--text-subtler); font-variant-numeric:tabular-nums; }
+
+h2 { color:var(--text-bold); font-size:19px; margin:0 0 4px; border-top:1px solid var(--border-subtle); padding-top:28px; }
+.lang-note { font-size:12.5px; color:var(--text-subtler); margin:0 0 18px; }
+.chart { margin-bottom:26px; }
+.chart h3 { font-size:14px; color:var(--text-bold); margin:0 0 2px; }
+.chart .sub { font-size:12px; color:var(--text-subtler); margin:0 0 10px; font-variant-numeric:tabular-nums; }
+.row { display:grid; grid-template-columns:172px 1fr 128px; align-items:center; gap:10px; padding:2px 6px; border-radius:5px; }
+.row:hover { background:var(--bg-hover); }
+.row .name { font-size:12.5px; color:var(--text-subtle); text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.badge { display:inline-block; background:var(--brand-soft); color:var(--brand); font-size:10px; font-weight:600; border-radius:999px; padding:0 7px; margin-left:5px; vertical-align:1px; }
+.track { background:var(--bg-subtle); border-radius:0 4px 4px 0; height:10px; position:relative; }
+.fill { background:var(--brand); height:10px; border-radius:0 4px 4px 0; min-width:2px; }
+.val { font-size:12px; color:var(--text-bold); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.val small { color:var(--text-subtler); font-weight:400; }
+.excl { font-size:11.5px; color:var(--text-subtler); margin:6px 6px 0; }
+.sample { background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:8px; margin:10px 6px 0; }
+.sample .src { font-size:10.5px; color:var(--text-subtler); padding:6px 12px 0; font-family:var(--mono); }
+.sample pre { margin:2px 0 0; padding:4px 12px 10px; font-family:var(--mono); font-size:11.5px; line-height:1.55; overflow-x:auto; color:var(--text-bold); }
+.sample .cm { color:var(--text-subtler); }
+.lown { color:var(--text-subtler); }
+
+.tablewrap { overflow-x:auto; border:1px solid var(--border); border-radius:8px; margin:14px 0 6px; }
+table { border-collapse:collapse; width:100%; font-size:13px; }
+th { background:var(--bg-surface); color:var(--text-subtle); font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; text-align:left; padding:8px 12px; border-bottom:1px solid var(--border-subtle); }
+td { padding:7px 12px; border-bottom:1px solid var(--border-subtle); font-variant-numeric:tabular-nums; vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+td:first-child { color:var(--text-bold); font-weight:600; white-space:nowrap; }
+code { font-family:var(--mono); font-size:11.5px; background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:4px; padding:0 4px; }
+
+.insights { background:var(--bg-surface); border:1px solid var(--border); border-radius:8px; padding:16px 20px; margin-top:8px; }
+.insights h2 { border:none; padding-top:0; font-size:15px; margin-bottom:8px; }
+.insights ol { margin:0; padding-left:20px; }
+.insights li { margin-bottom:7px; }
+.insights b { color:var(--text-bold); }
+.warnbox { border-left:3px solid var(--warning); background:var(--warning-bg); border-radius:0 6px 6px 0; padding:8px 12px; font-size:12.5px; margin-top:10px; }
+
+footer { border-top:1px solid var(--border-subtle); margin-top:36px; padding-top:16px; font-size:12px; color:var(--text-subtler); }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="eyebrow">Convention Compliance · v3 · 2026-08-12</div>
+<h1>컨벤션 준수율 리포트</h1>
+<p class="meta">collabops-* 원본 레포 25개 (py 15 · go 10, TS 조사 제외) · AST 스캐너 v3 — 약어 대문자 검사 추가, 예외 상속 레포단위 추적, 판별불가 비교 분리, 코드젠 파일 제외. 정확한 정의는 하단 「측정 기준」.</p>
+
+<div class="tiles">
+  <div class="tile"><div class="k">py 네이밍</div><div class="v">97.2%</div><div class="s">macro 97.7 · median 99.2</div></div>
+  <div class="tile"><div class="k">py 에러</div><div class="v">87.0%</div><div class="s">macro 81.3 · 범위 17~100</div></div>
+  <div class="tile"><div class="k">py 테스트</div><div class="v">31.0%</div><div class="s">macro 25.2 · median 22.4</div></div>
+  <div class="tile"><div class="k">go 네이밍</div><div class="v">98.1%</div><div class="s">macro 97.6 · median 99.4</div></div>
+  <div class="tile"><div class="k">go 에러</div><div class="v">98.6%</div><div class="s">macro 99.1 · 위반 5건/2레포</div></div>
+  <div class="tile"><div class="k">go 테스트</div><div class="v">7.6%</div><div class="s">macro 12.2 · 최고 29.1</div></div>
+</div>
+
+<!-- ═══════════ PY ═══════════ -->
+<h2>Python</h2>
+<p class="lang-note">15개 레포 · micro = 항목 합산, 괄호 = 표본수 n · <span class="badge">기준</span> = 축별 기준 레포</p>
+
+<div class="chart">
+  <h3>① 네이밍 — 파일명 snake_case · 클래스 CapWords · 약어 대문자 · Manager류 금지</h3>
+  <p class="sub">micro 97.2% — v3에서 약어 위반 신규 검출(손코드 기준)</p>
+  <div class="row" title="182/182"><span class="name">service-pipeline<span class="badge">기준</span></span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=182</small></span></div>
+  <div class="row" title="141/141"><span class="name">api-llm</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=141</small></span></div>
+  <div class="row" title="113/113"><span class="name">llm-gateway</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=113</small></span></div>
+  <div class="row" title="27/27, 표본 작음"><span class="name lown">service-rebac ⁿ</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=27</small></span></div>
+  <div class="row" title="834/835"><span class="name">api-payments</span><div class="track"><div class="fill" style="width:99.9%"></div></div><span class="val">99.9% <small>n=835</small></span></div>
+  <div class="row" title="5413/5446 — 약어 13 포함"><span class="name">api-orchestrator</span><div class="track"><div class="fill" style="width:99.4%"></div></div><span class="val">99.4% <small>n=5,446</small></span></div>
+  <div class="row" title="397/400 — 약어 3"><span class="name">agent-evals</span><div class="track"><div class="fill" style="width:99.2%"></div></div><span class="val">99.2% <small>n=400</small></span></div>
+  <div class="row" title="351/354 — AsyncJsonHttpClient·ContextGrpc* 3건"><span class="name">service-agent</span><div class="track"><div class="fill" style="width:99.2%"></div></div><span class="val">99.2% <small>n=354</small></span></div>
+  <div class="row" title="521/529 — 약어 6"><span class="name">api-people</span><div class="track"><div class="fill" style="width:98.5%"></div></div><span class="val">98.5% <small>n=529</small></span></div>
+  <div class="row" title="262/268"><span class="name">api-integrator</span><div class="track"><div class="fill" style="width:97.8%"></div></div><span class="val">97.8% <small>n=268</small></span></div>
+  <div class="row" title="5335/5586 — services/ PascalCase 파일 237 + Manager류 14"><span class="name">api-service</span><div class="track"><div class="fill" style="width:95.5%"></div></div><span class="val">95.5% <small>n=5,586</small></span></div>
+  <div class="row" title="1010/1066"><span class="name">api-piper</span><div class="track"><div class="fill" style="width:94.7%"></div></div><span class="val">94.7% <small>n=1,066</small></span></div>
+  <div class="row" title="561/593"><span class="name">service-notifier</span><div class="track"><div class="fill" style="width:94.6%"></div></div><span class="val">94.6% <small>n=593</small></span></div>
+  <div class="row" title="407/432"><span class="name">api-chat</span><div class="track"><div class="fill" style="width:94.2%"></div></div><span class="val">94.2% <small>n=432</small></span></div>
+  <div class="row" title="737/796"><span class="name">api-docs</span><div class="track"><div class="fill" style="width:92.6%"></div></div><span class="val">92.6% <small>n=796</small></span></div>
+  <div class="sample"><div class="src">기준 실물 — service-pipeline / app/shared/infrastructure/cache/lru_dict.py</div><pre><span class="cm"># 파일명 lru_dict.py = 개념 snake_case · 클래스는 약어 전부 대문자 (✗ LruDict)</span>
+class LRUDict(OrderedDict):</pre></div>
+</div>
+
+<div class="chart">
+  <h3>② 에러 네이밍 — 예외 클래스 *Error 접미사 (상속 트리 전체)</h3>
+  <p class="sub">micro 87.0% — bimodal: 본대 87~100 vs 이상치 2개(17~18%)</p>
+  <div class="row" title="36/36 — domain/exceptions.py 단일 파일 base+subclass 트리"><span class="name">service-agent<span class="badge">기준</span></span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=36</small></span></div>
+  <div class="row" title="9/9, 표본 작음"><span class="name lown">api-integrator ⁿ</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=9</small></span></div>
+  <div class="row" title="6/6, 표본 작음"><span class="name lown">agent-evals ⁿ</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=6</small></span></div>
+  <div class="row" title="4/4, 표본 작음"><span class="name lown">service-pipeline ⁿ</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=4</small></span></div>
+  <div class="row" title="31/32"><span class="name">api-chat</span><div class="track"><div class="fill" style="width:96.9%"></div></div><span class="val">96.9% <small>n=32</small></span></div>
+  <div class="row" title="45/47"><span class="name">api-orchestrator</span><div class="track"><div class="fill" style="width:95.7%"></div></div><span class="val">95.7% <small>n=47</small></span></div>
+  <div class="row" title="80/89 — BaseException shadow 포함"><span class="name">api-service</span><div class="track"><div class="fill" style="width:89.9%"></div></div><span class="val">89.9% <small>n=89</small></span></div>
+  <div class="row" title="43/48"><span class="name">api-payments</span><div class="track"><div class="fill" style="width:89.6%"></div></div><span class="val">89.6% <small>n=48</small></span></div>
+  <div class="row" title="25/28"><span class="name">api-piper</span><div class="track"><div class="fill" style="width:89.3%"></div></div><span class="val">89.3% <small>n=28</small></span></div>
+  <div class="row" title="45/51"><span class="name">api-docs</span><div class="track"><div class="fill" style="width:88.2%"></div></div><span class="val">88.2% <small>n=51</small></span></div>
+  <div class="row" title="27/31 — DomainException 패밀리"><span class="name">service-notifier</span><div class="track"><div class="fill" style="width:87.1%"></div></div><span class="val">87.1% <small>n=31</small></span></div>
+  <div class="row" title="12/18"><span class="name">api-people</span><div class="track"><div class="fill" style="width:66.7%"></div></div><span class="val">66.7% <small>n=18</small></span></div>
+  <div class="row" title="2/11 — 접미사 없는 예외 8"><span class="name">llm-gateway</span><div class="track"><div class="fill" style="width:18.2%"></div></div><span class="val">18.2% <small>n=11</small></span></div>
+  <div class="row" title="2/12 — BackendTimeout류 + 자식 1"><span class="name">api-llm</span><div class="track"><div class="fill" style="width:16.7%"></div></div><span class="val">16.7% <small>n=12</small></span></div>
+  <p class="excl">제외: service-rebac (예외 정의 없음)</p>
+  <div class="sample"><div class="src">기준 실물 — service-agent / src/agent_runtime/domain/exceptions.py:21,49</div><pre>class LLMGatewayError(Exception):
+    <span class="cm">"""Base for every llm-gateway client failure. ..."""</span>
+
+class LLMGatewayModelNotConfiguredError(LLMGatewayError):
+    <span class="cm">"""Gateway reports the requested model isn't pulled (404).  Fail-fast."""</span></pre></div>
+</div>
+
+<div class="chart">
+  <h3>③ 테스트 — 필드별 대신 객체 통짜 비교</h3>
+  <p class="sub">micro 31.0% — 최대 격차 축. v3에서 스칼라성 비교 제거(판별불가 333건 별도), payments 64%가 도달 가능 상한 증명</p>
+  <div class="row" title="195/305 — assert x == DTO(...) 인라인 생성"><span class="name">api-payments<span class="badge">기준</span></span><div class="track"><div class="fill" style="width:63.9%"></div></div><span class="val">63.9% <small>n=305</small></span></div>
+  <div class="row" title="1234/2743"><span class="name">api-orchestrator</span><div class="track"><div class="fill" style="width:45%"></div></div><span class="val">45.0% <small>n=2,743</small></span></div>
+  <div class="row" title="43/114"><span class="name">api-chat</span><div class="track"><div class="fill" style="width:37.7%"></div></div><span class="val">37.7% <small>n=114</small></span></div>
+  <div class="row" title="31/98"><span class="name">service-pipeline</span><div class="track"><div class="fill" style="width:31.6%"></div></div><span class="val">31.6% <small>n=98</small></span></div>
+  <div class="row" title="15/49"><span class="name">api-integrator</span><div class="track"><div class="fill" style="width:30.6%"></div></div><span class="val">30.6% <small>n=49</small></span></div>
+  <div class="row" title="789/2880"><span class="name">api-service</span><div class="track"><div class="fill" style="width:27.4%"></div></div><span class="val">27.4% <small>n=2,880</small></span></div>
+  <div class="row" title="77/316"><span class="name">service-notifier</span><div class="track"><div class="fill" style="width:24.4%"></div></div><span class="val">24.4% <small>n=316</small></span></div>
+  <div class="row" title="96/468"><span class="name">service-agent</span><div class="track"><div class="fill" style="width:20.5%"></div></div><span class="val">20.5% <small>n=468</small></span></div>
+  <div class="row" title="139/689"><span class="name">api-piper</span><div class="track"><div class="fill" style="width:20.2%"></div></div><span class="val">20.2% <small>n=689</small></span></div>
+  <div class="row" title="38/260"><span class="name">agent-evals</span><div class="track"><div class="fill" style="width:14.6%"></div></div><span class="val">14.6% <small>n=260</small></span></div>
+  <div class="row" title="65/512"><span class="name">api-docs</span><div class="track"><div class="fill" style="width:12.7%"></div></div><span class="val">12.7% <small>n=512</small></span></div>
+  <div class="row" title="17/182"><span class="name">api-people</span><div class="track"><div class="fill" style="width:9.3%"></div></div><span class="val">9.3% <small>n=182</small></span></div>
+  <div class="row" title="11/152"><span class="name">api-llm</span><div class="track"><div class="fill" style="width:7.2%"></div></div><span class="val">7.2% <small>n=152</small></span></div>
+  <div class="row" title="9/131"><span class="name">llm-gateway</span><div class="track"><div class="fill" style="width:6.9%"></div></div><span class="val">6.9% <small>n=131</small></span></div>
+  <p class="excl">제외: service-rebac (전 assert가 불리언 권한 검증) · 판별불가 Name==Name 333건은 분모 제외, 별도 집계</p>
+  <div class="sample"><div class="src">기준 실물 — api-payments / tests/unit/test_refund_policy.py:26 · tests/api/test_retention_endpoint.py:142</div><pre>assert plan == RefundPlan(amount=10000, is_full=True)   <span class="cm"># expected를 DTO 인라인 생성, assert 1개</span>
+
+body = resp.json()
+body.pop("duration_ms")            <span class="cm"># 휘발성 필드만 제거 후</span>
+assert body == {"dry_run": True, "scanned": 1, "deleted": 1, "remaining": False,
+                "by_policy": {"outbox_published": {"scanned": 1, "deleted": 1, "remaining": False}}}</pre></div>
+</div>
+
+<!-- ═══════════ GO ═══════════ -->
+<h2>Go</h2>
+<p class="lang-note">10개 레포 (api-context-next는 api-context와 동일 코드라 1개로 집계) · 약어 위반 전 레포 0</p>
+
+<div class="chart">
+  <h3>① 네이밍 — 패키지 소문자 한 단어 · stutter 금지(exported·revive 정의) · 약어 대문자</h3>
+  <p class="sub">micro 98.1% — git-executor·git-ssh만 이탈</p>
+  <div class="row" title="130/130"><span class="name">service-reconciler</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=130</small></span></div>
+  <div class="row" title="98/98"><span class="name">service-sweeper</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=98</small></span></div>
+  <div class="row" title="3973/3978 — 2,672파일 스케일에서 stutter 5"><span class="name">app-ctl<span class="badge">기준</span></span><div class="track"><div class="fill" style="width:99.9%"></div></div><span class="val">99.9% <small>n=3,978</small></span></div>
+  <div class="row" title="233/234"><span class="name">service-graph</span><div class="track"><div class="fill" style="width:99.6%"></div></div><span class="val">99.6% <small>n=234</small></span></div>
+  <div class="row" title="192/193"><span class="name">service-indexer-next</span><div class="track"><div class="fill" style="width:99.5%"></div></div><span class="val">99.5% <small>n=193</small></span></div>
+  <div class="row" title="289/291"><span class="name">api-context</span><div class="track"><div class="fill" style="width:99.3%"></div></div><span class="val">99.3% <small>n=291</small></span></div>
+  <div class="row" title="95/97"><span class="name">service-wtm</span><div class="track"><div class="fill" style="width:97.9%"></div></div><span class="val">97.9% <small>n=97</small></span></div>
+  <div class="row" title="65/67"><span class="name">git-http</span><div class="track"><div class="fill" style="width:97%"></div></div><span class="val">97.0% <small>n=67</small></span></div>
+  <div class="row" title="78/85"><span class="name">git-ssh</span><div class="track"><div class="fill" style="width:91.8%"></div></div><span class="val">91.8% <small>n=85</small></span></div>
+  <div class="row" title="1036/1139 — stutter 88(BlobHandler류) + Manager류 17"><span class="name">git-executor</span><div class="track"><div class="fill" style="width:91%"></div></div><span class="val">91.0% <small>n=1,139</small></span></div>
+  <div class="sample"><div class="src">기준 실물 — app-ctl / internal/render/composer.go</div><pre>type HelmValuesComposer interface {   <span class="cm">// 호출부는 render.HelmPlan — 패키지명 반복 없음 (✗ RenderHelmPlan)</span>
+type HelmPlan struct {
+type HelmChartSummary struct {</pre></div>
+</div>
+
+<div class="chart">
+  <h3>② 에러 네이밍 — sentinel Err* 접두 · 에러 타입 *Error 접미사 (Error() 구현체 포함)</h3>
+  <p class="sub">micro 98.6% — 사실상 해결. 위반 5건은 2개 레포 국한 (순환 분모 보정 반영)</p>
+  <div class="row" title="11/11"><span class="name">api-context</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=11</small></span></div>
+  <div class="row" title="269/271 — sentinel 260·%w 1,258곳. 위반: CheckEnvfileResult, Violation"><span class="name">app-ctl<span class="badge">기준</span></span><div class="track"><div class="fill" style="width:99.3%"></div></div><span class="val">99.3% <small>n=271</small></span></div>
+  <div class="row" title="46/49 — 위반: invalidBindErr, responseErr, responseOverride"><span class="name">git-executor</span><div class="track"><div class="fill" style="width:93.9%"></div></div><span class="val">93.9% <small>n=49</small></span></div>
+  <div class="row" title="7/7, 표본 작음"><span class="name lown">service-graph ⁿ</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=7</small></span></div>
+  <div class="row" title="6/6, 표본 작음"><span class="name lown">git-http ⁿ</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=6</small></span></div>
+  <div class="row" title="5/5, 표본 작음"><span class="name lown">service-indexer-next ⁿ</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=5</small></span></div>
+  <div class="row" title="4/4, 표본 작음"><span class="name lown">service-wtm ⁿ</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=4</small></span></div>
+  <div class="row" title="1/1, 표본 작음"><span class="name lown">service-reconciler ⁿ</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100% <small>n=1</small></span></div>
+  <p class="excl">제외: git-ssh · service-sweeper (에러 정의 없음)</p>
+  <div class="sample"><div class="src">기준 실물 — app-ctl / internal/ponr/code.go:45 · internal/render/plan.go</div><pre>var ErrConfirmCodeInvalid = errors.New("ponr: confirm code must be exactly 4 decimal digits")
+                            <span class="cm">// Err 접두 + 메시지 "패키지명:" 프리픽스</span>
+return nil, fmt.Errorf("render: marshal install-plan: %w", err)
+return Manifest{}, fmt.Errorf("%w: %w", ErrWriteAborted, err)   <span class="cm">// sentinel+원인 이중 랩</span></pre></div>
+</div>
+
+<div class="chart">
+  <h3>③ 테스트 — cmp.Diff/통짜 비교 vs 필드별 비교</h3>
+  <p class="sub">micro 7.6% — go 전 레포 SSOT 미달, 자생 모범 없음. 1위도 29%</p>
+  <div class="row" title="23/79"><span class="name">service-sweeper<span class="badge">조건부</span></span><div class="track"><div class="fill" style="width:29.1%"></div></div><span class="val">29.1% <small>n=79</small></span></div>
+  <div class="row" title="11/46"><span class="name">git-http</span><div class="track"><div class="fill" style="width:23.9%"></div></div><span class="val">23.9% <small>n=46</small></span></div>
+  <div class="row" title="41/179"><span class="name">service-wtm</span><div class="track"><div class="fill" style="width:22.9%"></div></div><span class="val">22.9% <small>n=179</small></span></div>
+  <div class="row" title="24/181 — DeepEqual got/want"><span class="name">service-reconciler</span><div class="track"><div class="fill" style="width:13.3%"></div></div><span class="val">13.3% <small>n=181</small></span></div>
+  <div class="row" title="70/684"><span class="name">git-executor</span><div class="track"><div class="fill" style="width:10.2%"></div></div><span class="val">10.2% <small>n=684</small></span></div>
+  <div class="row" title="2/21, 표본 작음"><span class="name lown">git-ssh ⁿ</span><div class="track"><div class="fill" style="width:9.5%"></div></div><span class="val">9.5% <small>n=21</small></span></div>
+  <div class="row" title="6/96"><span class="name">service-graph</span><div class="track"><div class="fill" style="width:6.2%"></div></div><span class="val">6.2% <small>n=96</small></span></div>
+  <div class="row" title="93/2049"><span class="name">app-ctl</span><div class="track"><div class="fill" style="width:4.5%"></div></div><span class="val">4.5% <small>n=2,049</small></span></div>
+  <div class="row" title="4/183"><span class="name">api-context</span><div class="track"><div class="fill" style="width:2.2%"></div></div><span class="val">2.2% <small>n=183</small></span></div>
+  <div class="row" title="0/93"><span class="name">service-indexer-next</span><div class="track"><div class="fill" style="width:0%"></div></div><span class="val">0.0% <small>n=93</small></span></div>
+  <div class="sample"><div class="src">기준 실물 — service-sweeper / scripts/gen-conformance-fixture/main_test.go:52 (+ SSOT §03 cmp.Diff가 정본)</div><pre>assert.Equal(t, before, after, "private key must be reused, not regenerated")</pre></div>
+</div>
+
+<!-- ═══════════ 요약 ═══════════ -->
+<h2>분포 요약</h2>
+<div class="tablewrap">
+<table>
+  <tr><th>축</th><th>micro</th><th>macro</th><th>median</th><th>범위</th></tr>
+  <tr><td>py 네이밍</td><td>97.2%</td><td>97.7%</td><td>99.2%</td><td>93~100%</td></tr>
+  <tr><td>py 에러</td><td>87.0%</td><td>81.3%</td><td>89.7%</td><td>17~100%</td></tr>
+  <tr><td>py 테스트</td><td>31.0%</td><td>25.2%</td><td>22.4%</td><td>7~64%</td></tr>
+  <tr><td>go 네이밍</td><td>98.1%</td><td>97.6%</td><td>99.4%</td><td>91~100%</td></tr>
+  <tr><td>go 에러</td><td>98.6%</td><td>99.1%</td><td>100%</td><td>94~100%</td></tr>
+  <tr><td>go 테스트</td><td>7.6%</td><td>12.2%</td><td>9.9%</td><td>0~29%</td></tr>
+</table>
+</div>
+<div class="tablewrap" style="margin-top:12px">
+<table>
+  <tr><th>지표</th><th>계산</th><th>답하는 질문</th></tr>
+  <tr><td>micro</td><td>전 레포 항목을 합산해 계산 — 큰 레포가 무겁게 반영</td><td>코드 아무거나 집으면 규칙 지켰을 확률 (강제 효과 측정용)</td></tr>
+  <tr><td>macro</td><td>레포별 %의 단순 평균 — 레포 하나가 한 표</td><td>평균적인 레포는 몇 점인가</td></tr>
+  <tr><td>median</td><td>점수순 가운데 레포</td><td>보통 레포는? — 이상치에 안 흔들림</td></tr>
+  <tr><td>범위</td><td>꼴찌 ~ 1등 레포</td><td>편차 (좁으면 전사 규칙, 넓으면 레포별 복불복)</td></tr>
+</table>
+</div>
+<p class="excl">읽는 법 — micro·macro가 벌어지면 신호: <b>py 에러 87.0 &gt; 81.3</b> = 작은 레포가 말아먹는 중(이상치 api-llm·llm-gateway가 소형이라 macro만 끌어내림). <b>go 테스트 7.6 &lt; 12.2</b> = 반대로 레포가 클수록 못 지킴(app-ctl 2,049 assert가 4.5%). <b>py 네이밍 median 99.2 + 범위 93~100</b> = 절반 이상 만점급, 문제는 꼬리 몇 개뿐. 우선순위: 강제 효과는 micro로 추적, 수리는 범위 하단부터.</p>
+
+<div class="insights">
+  <h2>인사이트</h2>
+  <ol>
+    <li><b>네이밍은 사실상 해결된 축.</b> 양 언어 micro 97%+. 꼬리는 국소적 — git-executor(91%, stutter 88), api-service(95.5%, PascalCase 파일 237). v3 약어 검사에서도 go는 위반 0, py는 37건뿐.</li>
+    <li><b>py 에러는 bimodal.</b> 본대 87~100% vs api-llm 16.7%·llm-gateway 18.2% — 접미사 없는 예외 패밀리(<code>BackendTimeout</code>류)가 정체. LLM 계열 공통 습관.</li>
+    <li><b>테스트 축이 진짜 격차.</b> go micro 7.6%(사실상 전무), py micro 31%. py 범위 7~64%가 보여주듯 언어 한계가 아니라 관행 — payments의 <code>assert x == DTO(...)</code>가 도달 가능 상한.</li>
+  </ol>
+  <div class="warnbox">⚠️ 별도 플래그: api-service <code>shared/exceptions.py:192</code>의 <code>class BaseException</code>은 파이썬 빌트인 shadow — 네이밍 이전에 버그급. 단 M6 도메인 예외 트리 루트라 rename은 계약 변경, 별도 논의 필요.</div>
+</div>
+
+<!-- ═══════════ 측정 기준 ═══════════ -->
+<h2>측정 기준 (스캐너 v3)</h2>
+<p class="lang-note">공통: 원본 clone만 (worktree 제외) · 코드젠 제외 (<code>*generated*</code>, <code>*_pb2*</code>, <code>*.pb.go</code>) · <code>vendor</code>/<code>.venv</code>/<code>node_modules</code> 제외 · 테스트 파일 = py <code>test_*.py</code>·<code>*_test.py</code>·<code>tests/</code> 경로, go <code>*_test.go</code>. 도구: stdlib <code>ast</code> / <code>go/parser</code> (<code>~/Desktop/collabops-convention-scan/</code>)</p>
+<div class="tablewrap">
+<table>
+  <tr><th>축</th><th>분모 (샘플)</th><th>위반 판정</th><th>알려진 한계</th></tr>
+  <tr><td>py 네이밍</td><td>파일 수 + 비테스트 클래스 정의 수</td><td>파일명 대문자/하이픈 · 클래스 CapWords 불일치 · 약어 소문자(Http·Api·Url·Json·Sql·Jwt·Uuid·Grpc·Html·Llm 뒤 대문자/끝) · Manager/Helper/Util(s)/Common 접미사</td><td>함수/변수명 미측정(SSOT 축1 범위 밖) · 약어 목록은 고정 10종</td></tr>
+  <tr><td>py 에러</td><td>예외 클래스 집합 — Exception 계열 상속을 레포 단위 fixpoint로 추적, 이름 dedup</td><td><code>*Exception</code> 접미사 or 접미사 없음</td><td>외부 라이브러리 예외 상속은 base 이름이 규칙형일 때만 탐지</td></tr>
+  <tr><td>py 테스트</td><td>테스트 내 ==/!= assert·assertEqual 중 [필드 좌변]+[객체 판정]</td><td>객체 인정: <code>x == Ctor(...)</code> · dict/list 리터럴 비교 · <code>x.method() == 비상수</code> · Name==Name은 한쪽이 expected/want/desired 접두일 때만. 그 외 필드 좌변 = 위반</td><td>상수 비교·status(_code)·판별불가 Name==Name(333건) 분모 제외 · Subscript 좌변 미분류</td></tr>
+  <tr><td>go 네이밍</td><td>파일 수 + 비테스트 타입 정의 수</td><td>패키지명 <code>_</code> · stutter(exported+단어경계, revive 정의·교차검증) · 약어 소문자(exported) · Manager류 접미사</td><td>함수명 stutter 미측정(타입만) — revive는 함수도 잡음</td></tr>
+  <tr><td>go 에러</td><td>sentinel(<code>errors.New</code>/<code>fmt.Errorf</code> var) + 에러 타입 집합(<code>*Error</code>/<code>*Exception</code> 이름 ∪ <code>Error() string</code> 구현 리시버)</td><td>sentinel Err 비접두 · <code>*Exception</code> · 접미사 없는 <code>Error()</code> 구현체</td><td><code>errors.Join</code>·커스텀 생성자 sentinel 미탐지</td></tr>
+  <tr><td>go 테스트</td><td><code>cmp.Diff/Equal</code>·<code>DeepEqual</code> + testify <code>Equal*</code>(리터럴 제외) + 셀렉터 좌변 비교식</td><td>필드 비교(셀렉터 vs 셀렉터/리터럴) = 위반</td><td>assert 아닌 if 조건 일부 혼입 · StatusCode/Code 제외</td></tr>
+</table>
+</div>
+<p class="excl">교차검증: py 네이밍·에러 = ruff <code>N801/N818/N999</code>(api-service 수치 일치) · go stutter = revive <code>exported</code>(app-ctl 5건 일치). 측정 이력: v1 regex(폐기) → v2 AST → v3 = 약어 검사 + 상속 fixpoint + 스칼라 비교 제거 + 코드젠 제외 + 순환 분모 보정.</p>
+
+<!-- ═══════════ 기준 레포와 적용 ═══════════ -->
+<h2>기준 레포와 적용 방법</h2>
+<div class="tablewrap">
+<table>
+  <tr><th>축</th><th>기준 레포</th><th>선정 근거</th><th>다른 레포 적용 수단</th></tr>
+  <tr><td>py 네이밍</td><td><b>service-pipeline</b></td><td>100% (n=182), 무결 중 최대 표본. service-agent는 v3 약어 3건으로 강등(99.2%)</td><td>ruff <code>N801/N999</code> + per-file-ignores 장부 (api-service에서 패턴 검증). 약어 규칙은 ruff 미지원 → 스캐너 v3 loop 검출, 필요 시 guard 테스트 이식</td></tr>
+  <tr><td>py 에러</td><td><b>service-agent</b></td><td>100% (n=36) — <code>domain/exceptions.py</code> 단일 파일, base+subclass 트리, 유일 무결 대표본</td><td>ruff <code>N818</code> (같은 CR에 포함). 신규 예외는 도메인 base 상속 + Error 접미사</td></tr>
+  <tr><td>py 테스트</td><td><b>api-payments</b></td><td>63.9% (n=305) 1위 — <code>assert x == DTO(...)</code> 인라인 생성, API는 <code>body == {...}</code> 전체 비교</td><td>린터 없음 → 각 레포 CLAUDE.md에 payments 방식 이식 + 분기별 스캐너 재실행(추이 하락 시 guard ratchet 이식)</td></tr>
+  <tr><td>go 네이밍</td><td><b>app-ctl</b></td><td>99.9% (n=3,978) — 최대 스케일에서 stutter 5. 소규모 무결은 reconciler·sweeper</td><td>golangci-lint: revive <code>exported</code> + stylecheck <code>ST1003</code>(약어)</td></tr>
+  <tr><td>go 에러</td><td><b>app-ctl</b></td><td>99.3% (n=271) — sentinel 260 + <code>pkg:</code> 메시지 프리픽스 + <code>%w</code> 1,258곳</td><td>stylecheck <code>ST1012</code>(sentinel) — 같은 golangci CR. 잔여 위반 5건 rename은 10분</td></tr>
+  <tr><td>go 테스트</td><td><b>service-sweeper</b> (조건부)</td><td>29.1% 1위지만 SSOT 미달 — 자생 모범 없음, <code>cmp.Diff(want, got)</code>는 SSOT §03 예시가 정본</td><td>py와 동일: CLAUDE.md 이식 + 스캐너 추이. cmp 도입은 새 테스트부터</td></tr>
+</table>
+</div>
+<p class="lang-note" style="margin-top:10px">실행 순서: ① py 전 레포 ruff N 3룰 CR(축1·2 잠금) → ② api-llm·llm-gateway 예외 rename CR 2건(py 에러 87→~97%) → ③ go golangci-lint CR + 잔여 5건 rename → ④ payments/SSOT 테스트 규칙 CLAUDE.md 이식 → ⑤ api-service BaseException 이슈 등록. 소급 안 함: 파일 rename(237)·기존 테스트 개조·TS 전체.</p>
+
+<footer>
+  기준 문서: <code>collabops-code-conventions.md</code> (SSOT) · 스캐너: <code>~/Desktop/collabops-convention-scan/</code> v3 · 조사 이력: 1회차 regex → 2회차 AST → 교차검증(ruff·revive) → 3회차 v3 조임. 2026-08-12.
+</footer>
+
+</div>
+</body>
+</html>
